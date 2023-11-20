@@ -7,7 +7,6 @@ import { Suspense } from 'react';
 import './styles/index.scss';
 
 
-
 const App = () => {
   const { theme } = useTheme();
   
