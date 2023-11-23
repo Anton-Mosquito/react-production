@@ -5,18 +5,13 @@
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :focus,
 :active {
-  outline: none;
-}
-
-a:focus,
-a:active {
   outline: none;
 }
 
@@ -30,7 +25,6 @@ aside {
 html,
 body {
   width: 100%;
-  font-size: 100%;
   line-height: 1;
   font-size: 16px;
   text-size-adjust: 100%;
@@ -60,6 +54,11 @@ button::-moz-focus-inner {
 a,
 a:visited {
   text-decoration: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
 }
 
 a:hover {
