@@ -5,7 +5,9 @@ import { buildResolvers } from './buildResolvers'
 import { type BuildOptions } from './types/config'
 import type webpack from 'webpack'
 
-export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {
+export const buildWebpackConfig = (
+  options: BuildOptions
+): webpack.Configuration => {
   const { paths, mode, isDev } = options
 
   return {

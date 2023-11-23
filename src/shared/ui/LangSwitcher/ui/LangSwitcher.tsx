@@ -8,9 +8,12 @@ interface LangSwitcherProps {
   className?: string
 }
 
-export const LangSwitcher = ({ className = '' }: LangSwitcherProps): JSX.Element => {
+export const LangSwitcher = (
+  { className = '' }: LangSwitcherProps
+): JSX.Element => {
   const { t, i18n } = useTranslation()
-  const toggle = async (): Promise<TFunction<'translation', undefined>> => await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
+  const toggle = async (): Promise<TFunction<'translation', undefined>> =>
+    await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
 
   return (
       <Button
