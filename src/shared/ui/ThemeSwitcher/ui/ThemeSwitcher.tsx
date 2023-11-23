@@ -9,7 +9,9 @@ interface ThemeSwitcherProps {
   className?: string
 }
 
-export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps): JSX.Element => {
+export const ThemeSwitcher = (
+  { className = '' }: ThemeSwitcherProps
+): JSX.Element => {
   const { theme, toggleTheme } = useTheme()
 
   return (

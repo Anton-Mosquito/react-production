@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    //jest: true
   },
   extends: [
     'standard-with-typescript',
@@ -42,7 +43,8 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'warn',
     'import/no-extraneous-dependencies': 'off',
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
-    "i18next/no-literal-string": ['error', { markupOnly: true }]
+    "i18next/no-literal-string": ['error', { markupOnly: true }],
+    'max-len': ['error', { ignoreComments: true}]
   },
   globals: {
     __IS_DEV__: true
