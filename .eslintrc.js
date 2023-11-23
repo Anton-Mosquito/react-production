@@ -8,7 +8,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'plugin:i18next/recommended'
   ],
   parser: "@typescript-eslint/parser",
   overrides: [
@@ -30,7 +31,8 @@ module.exports = {
     project: './tsconfig.json'
   },
   plugins: [
-    'react'
+    'react',
+    'i18next'
   ],
   rules: {
     'react/jsx-indent': [2, 4],
@@ -39,7 +41,8 @@ module.exports = {
     'no-underscore-dangle': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'warn',
     'import/no-extraneous-dependencies': 'off',
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }]
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "i18next/no-literal-string": ['error', { markupOnly: true }]
   },
   globals: {
     __IS_DEV__: true
