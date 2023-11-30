@@ -2,7 +2,6 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    //jest: true
   },
   extends: [
     'standard-with-typescript',
@@ -19,8 +18,12 @@ module.exports = {
         node: true
       },
       files: [
-        '.eslintrc.{js,cjs}'
+        '.eslintrc.{js,cjs}',
+        '**/src/**/*.test.{ts,tsx}'
       ],
+      rules: {
+        "i18next/no-literal-string": 'off'
+      },
       parserOptions: {
         sourceType: 'script'
       }
@@ -43,7 +46,9 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'warn',
     'import/no-extraneous-dependencies': 'off',
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
-    "i18next/no-literal-string": ['error', { markupOnly: true }],
+    "i18next/no-literal-string": ['error', 
+    { markupOnly: true, ignoreAttribute: ['data-testid'] }
+  ],
     'max-len': ['error', { ignoreComments: true, code: 100}]
   },
   globals: {
