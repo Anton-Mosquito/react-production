@@ -2,7 +2,10 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "webpack.config.ts"
+    "webpack.config.ts",
+    "./config/jest/setupTests.ts",
+    "./config/jest/jest.config.ts",
+    "./config/jest/jestEmptyComponent.tsx"
   ],
   "exclude": [
     "node_modules", 
