@@ -3,14 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'standard-with-typescript',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:i18next/recommended'
-  ],
+  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:react/jsx-runtime', 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   parser: "@typescript-eslint/parser",
   overrides: [
     {
@@ -47,7 +40,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
     "i18next/no-literal-string": ['error', 
-    { markupOnly: true, ignoreAttribute: ['data-testid'] }
+    { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }
   ],
     'max-len': ['error', { ignoreComments: true, code: 100}]
   },
