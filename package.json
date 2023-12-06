@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "browser": {
+    "[module-name]": false   
+  },
   "scripts": {
     "start": "webpack serve --env port=3333",
     "build:prod": "webpack  --env mode=production",
