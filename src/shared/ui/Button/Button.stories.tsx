@@ -1,15 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button, ThemeButton } from './Button'
+import { Button, ButtonSize, ThemeButton } from './Button'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'ui/Button',
   component: Button,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered'
-  },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs']
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
@@ -38,6 +34,70 @@ export const Outline: Story = {
   args: {
     children: 'OUTLINE',
     theme: ThemeButton.OUTLINE
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const OutlineSizeL: Story = {
+  args: {
+    children: 'OUTLINE',
+    theme: ThemeButton.OUTLINE,
+    size: ButtonSize.L
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const OutlineSizeXL: Story = {
+  args: {
+    children: 'OUTLINE',
+    theme: ThemeButton.OUTLINE,
+    size: ButtonSize.XL
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const Background: Story = {
+  args: {
+    children: 'Background',
+    theme: ThemeButton.BACKGROUND
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const BackgroundInverted: Story = {
+  args: {
+    children: 'BackgroundInverted',
+    theme: ThemeButton.BACKGROUND_INVERTED
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const Square: Story = {
+  args: {
+    children: '>',
+    theme: ThemeButton.BACKGROUND_INVERTED,
+    square: true,
+    size: ButtonSize.M
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const SquareSizeL: Story = {
+  args: {
+    children: '>',
+    theme: ThemeButton.BACKGROUND_INVERTED,
+    square: true,
+    size: ButtonSize.L
+  },
+  decorators: [ThemeDecorator]
+}
+
+export const SquareSizeXL: Story = {
+  args: {
+    children: '>',
+    theme: ThemeButton.BACKGROUND_INVERTED,
+    square: true,
+    size: ButtonSize.XL
   },
   decorators: [ThemeDecorator]
 }
