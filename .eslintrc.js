@@ -3,7 +3,15 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:react/jsx-runtime', 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'standard-with-typescript', 
+    'plugin:react/recommended', 
+    'plugin:react/jsx-runtime', 
+    'eslint:recommended', 
+    'plugin:@typescript-eslint/recommended', 
+    'plugin:i18next/recommended', 
+    'plugin:storybook/recommended'
+  ],
   parser: "@typescript-eslint/parser",
   overrides: [
     {
@@ -25,7 +33,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json'
+    project: './tsconfig.json',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   plugins: [
     'react',
