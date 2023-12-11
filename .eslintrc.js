@@ -51,9 +51,10 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
     "i18next/no-literal-string": ['error', 
-    { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }
-  ],
-    'max-len': ['error', { ignoreComments: true, code: 100}]
+      { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
+    ],
+    'max-len': ['error', { ignoreComments: true, code: 100}],
+    //'no-param-reassign': 'off',
   },
   globals: {
     __IS_DEV__: true
