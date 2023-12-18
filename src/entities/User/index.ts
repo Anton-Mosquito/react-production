@@ -1,3 +1,5 @@
+export { getUserAuthData } from './model/selectors/getUserAuthData.tsx/getUserAuthData'
+
 export {
   userReducer,
   userActions

@@ -5,7 +5,7 @@ import { type StateSchema } from '../config/StateSchema'
 
 interface StoreProviderProps {
   children?: ReactNode
-  initialState: StateSchema
+  initialState?: StateSchema
 }
 
 export const StoreProvider = ({ children, initialState }: StoreProviderProps): JSX.Element => {
