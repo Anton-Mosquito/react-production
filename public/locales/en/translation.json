@@ -8,5 +8,8 @@
   "короткий язик": "EN",
   "Войти": "Enter",
   "Введите username": "Enter username",
-  "Введите password": "Enter password"
+  "Введите password": "Enter password",
+  "Форма авторизации": "Authorization form",
+  "Недійсні дані авторизації": "Invalid authorization data",
+  "Вийти": "Exit"
 }
