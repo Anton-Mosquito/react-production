@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ThemeSwitcher.module.scss'
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
@@ -10,7 +10,7 @@ interface ThemeSwitcherProps {
   className?: string
 }
 
-export const ThemeSwitcher = (
+const ThemeSwitcher = memo((
   { className = '' }: ThemeSwitcherProps
 ): JSX.Element => {
   const { theme, toggleTheme } = useTheme()
@@ -27,4 +27,8 @@ export const ThemeSwitcher = (
         }
       </Button>
   )
-}
+})
+
+ThemeSwitcher.displayName = 'ThemeSwitcher'
+
+export { ThemeSwitcher }

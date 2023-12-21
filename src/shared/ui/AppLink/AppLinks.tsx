@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { type ReactNode, type FC, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './AppLink.module.scss'
 import { Link, type LinkProps } from 'react-router-dom'
-import { type FC } from 'react'
 
 export enum AppLinkTheme {
   PRIMARY = 'primary',
@@ -13,16 +12,17 @@ export enum AppLinkTheme {
 interface AppLinkProps extends LinkProps {
   className?: string
   theme?: AppLinkTheme
+  children?: ReactNode
 }
 
-export const AppLink: FC<AppLinkProps> = (
+const AppLink = memo((
   {
     to,
     className = '',
     children,
     theme = AppLinkTheme.PRIMARY,
     ...otherProps
-  }) => {
+  }: AppLinkProps) => {
   return (
       <Link
           to={to}
@@ -32,4 +32,8 @@ export const AppLink: FC<AppLinkProps> = (
           { children }
       </Link>
   )
-}
+})
+
+AppLink.displayName = 'AppLink'
+
+export { AppLink }
