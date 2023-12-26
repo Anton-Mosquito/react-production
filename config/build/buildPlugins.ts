@@ -7,7 +7,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 export const buildPlugins = (
   options: BuildOptions
 ): webpack.WebpackPluginInstance[] => {
-  const { paths, isDev } = options
+  const { paths, isDev, apiUrl } = options
 
   const plugins = [
     new webpack.ProgressPlugin(),
@@ -19,7 +19,8 @@ export const buildPlugins = (
       chunkFilename: 'css/[name].[contenthash:8].css'
     }),
     new webpack.DefinePlugin({
-      __IS_DEV__: options.isDev
+      __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl)
     }),
     new webpack.ProvidePlugin({
       React: 'react'

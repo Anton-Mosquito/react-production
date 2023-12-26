@@ -13,14 +13,14 @@ if (container !== null) {
   const root = createRoot(container) // createRoot(container!) if you use TypeScript
 
   root.render(
-      <StoreProvider initialState={{}}>
-          <BrowserRouter>
+      <BrowserRouter>
+          <StoreProvider initialState={{}}>
               <ErrorBoundary>
                   <ThemeProvider>
                       <App/>
                   </ThemeProvider>
               </ErrorBoundary>
-          </BrowserRouter>
-      </StoreProvider>
+          </StoreProvider>
+      </BrowserRouter>
   )
 }
