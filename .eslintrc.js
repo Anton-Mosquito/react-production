@@ -63,6 +63,7 @@ module.exports = {
     "react-hooks/exhaustive-deps": "error" // Checks effect dependencies
   },
   globals: {
-    __IS_DEV__: true
+    __IS_DEV__: true,
+    __API__: ''
   }
 }
