@@ -32,7 +32,6 @@ const Input = memo(({
   }, [autofocus])
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log('sadasdad', e.target.value)
     onChange?.(e.target.value)
     setCaretPosition(e.target.value.length)
   }

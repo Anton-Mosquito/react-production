@@ -43,7 +43,7 @@ const Button = memo((
   return (
       <button
           type='button'
-          className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
+          className={classNames(cls.Button, mods, [cls[theme], cls[size], className])}
           disabled={disabled}
           {...otherProps}
       >

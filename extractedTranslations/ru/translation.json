@@ -1,4 +1,5 @@
 {
+  "": "",
   "Invalid authorization data": "Invalid authorization data",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam": {
@@ -8,6 +9,8 @@
   "O сайте": "O сайте",
   "PROFILE PAGE": "PROFILE PAGE",
   "throw error": "throw error",
+  "Ваша фамилия": "Ваша фамилия",
+  "Ваше имя": "Ваше имя",
   "Введите password": "Введите password",
   "Введите username": "Введите username",
   "Введите логин": "Введите логин",
@@ -20,6 +23,8 @@
   "О сайте": "О сайте",
   "Обновить страницу": "Обновить страницу",
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
+  "Профиль": "Профиль",
+  "Редактировать": "Редактировать",
   "Страница не найдена": "Страница не найдена",
   "Форма авторизации": "Форма авторизации",
   "Язик": "Язик"
