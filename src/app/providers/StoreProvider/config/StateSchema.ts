@@ -2,7 +2,8 @@ import {
   type ReducersMapObject,
   type EnhancedStore,
   type Action,
-  type Reducer
+  type Reducer,
+  Dispatch
 } from '@reduxjs/toolkit'
 import { type AxiosInstance } from 'axios'
 import { type ProfileSchema } from 'entities/Profile'
@@ -32,7 +33,7 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
   api: AxiosInstance
-  navigate: (to: To, options?: NavigateOptions) => void
+  navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkConfig<T> {
