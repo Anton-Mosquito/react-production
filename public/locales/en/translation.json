@@ -11,5 +11,7 @@
   "Введите password": "Enter password",
   "Форма авторизации": "Authorization form",
   "Недійсні дані авторизації": "Invalid authorization data",
-  "Вийти": "Exit"
+  "Вийти": "Exit",
+  "Укажите валюту": "Define currency",
+  "Укажите страну": "Define country"
 }

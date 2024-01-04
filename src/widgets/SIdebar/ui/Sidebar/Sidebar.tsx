@@ -8,20 +8,20 @@ import { SidebarItemsList } from '../../model/items'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 
 interface SidebarProps {
-  className?: string
+    className?: string
 }
 
 const Sidebar = memo(({ className = '' }: SidebarProps): JSX.Element => {
-  const [collapsed, setCollapsed] = useState(false)
-  const onToggle = (): void => { setCollapsed(prev => !prev) }
+    const [collapsed, setCollapsed] = useState(false)
+    const onToggle = (): void => { setCollapsed(prev => !prev) }
 
-  const itemsList = useMemo(() => SidebarItemsList.map((item) => (
-      <SidebarItem
-          key={item.path}
-          item={item}
-          collapsed={collapsed}
-      />
-  )), [collapsed])
+    const itemsList = useMemo(() => SidebarItemsList.map((item) => (
+        <SidebarItem
+            key={item.path}
+            item={item}
+            collapsed={collapsed}
+        />
+    )), [collapsed])
 
   return (
       <div
