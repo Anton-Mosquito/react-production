@@ -1,6 +1,6 @@
 export type {
   ProfileSchema,
-  Profile,
+  Profile
 } from './model/types/profile'
 
 export {
@@ -12,15 +12,13 @@ export {
   profileReducer
 } from './model/slice/profileSlice'
 
-
 export {
-  fetchProfileData,
+  fetchProfileData
 } from './model/services/fetchProfileData/fetchProfileData'
 
 export {
-  updateProfileData,
+  updateProfileData
 } from './model/services/updateProfileData/updateProfileData'
-
 
 export {
   ProfileCard
@@ -31,6 +29,6 @@ export { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getPr
 export { getProfileError } from './model/selectors/getProfileError/getProfileError'
 export { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly'
 export { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
-export { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors/getProfileValidateErrors'
-
-
+export {
+  getProfileValidateErrors
+} from './model/selectors/getProfileValidateErrors/getProfileValidateErrors'

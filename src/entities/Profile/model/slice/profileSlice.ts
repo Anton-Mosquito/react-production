@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Profile, type ProfileSchema } from '../types/profile'
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { type Profile, type ProfileSchema } from '../types/profile'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 import { Currency } from 'entities/Currency'
@@ -14,11 +14,11 @@ const initialState: ProfileSchema = {
     country: Country.Ukraine,
     city: '',
     username: '',
-    avatar: '',
+    avatar: ''
   },
   isLoading: false,
   error: '',
-  readonly: true,
+  readonly: true
 }
 
 export const profileSlice = createSlice({
@@ -38,7 +38,7 @@ export const profileSlice = createSlice({
         ...state.data,
         ...action.payload
       }
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
