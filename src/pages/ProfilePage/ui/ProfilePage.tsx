@@ -1,18 +1,22 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ProfilePage.module.scss'
 import { useTranslation } from 'react-i18next'
-import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { 
-  ProfileCard, fetchProfileData, getProfileForm, 
-  getProfileError, getProfileIsLoading, getProfileReadonly, 
-  profileActions, profileReducer, getProfileValidateErrors, 
-  ValidateProfileError } from 'entities/Profile'
+import {
+  DynamicModuleLoader,
+  type ReducersList
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import {
+  ProfileCard, fetchProfileData, getProfileForm,
+  getProfileError, getProfileIsLoading, getProfileReadonly,
+  profileActions, profileReducer, getProfileValidateErrors,
+  ValidateProfileError
+} from 'entities/Profile'
 import { useCallback, useEffect } from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
+import { type Currency } from 'entities/Currency'
+import { type Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 
 const reducers: ReducersList = {
@@ -37,67 +41,69 @@ const ProfilePage = ({ className = '' }: ProfilePageProps): JSX.Element => {
     [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательни'),
     [ValidateProfileError.NO_DATA]: t('Данние не указани')
   }
-  
+
   useEffect(() => {
-    dispatch(fetchProfileData())
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData())
+    }
   }, [dispatch])
 
   const onChangeFirstName = useCallback((value?: string) => {
-    dispatch(profileActions.updateProfile({first: value}))
+    dispatch(profileActions.updateProfile({ first: value }))
   }, [dispatch])
 
   const onChangeLastName = useCallback((value?: string) => {
-    dispatch(profileActions.updateProfile({lastname: value}))
+    dispatch(profileActions.updateProfile({ lastname: value }))
   }, [dispatch])
 
   const onChangeAge = useCallback((value?: string) => {
-    dispatch(profileActions.updateProfile({age: Number(value || 0)}))
+    dispatch(profileActions.updateProfile({ age: Number(value ?? 0) }))
   }, [dispatch])
 
   const onChangeCity = useCallback((value?: string) => {
-    dispatch(profileActions.updateProfile({city: value}))
+    dispatch(profileActions.updateProfile({ city: value }))
   }, [dispatch])
 
   const onChangeUsername = useCallback((value?: string) => {
-    dispatch(profileActions.updateProfile({username: value}))
+    dispatch(profileActions.updateProfile({ username: value }))
   }, [dispatch])
 
   const onChangeAvatar = useCallback((value?: string) => {
-    dispatch(profileActions.updateProfile({avatar: value}))
+    dispatch(profileActions.updateProfile({ avatar: value }))
   }, [dispatch])
 
   const onChangeCurrency = useCallback((currency: Currency) => {
-    dispatch(profileActions.updateProfile({currency}))
+    dispatch(profileActions.updateProfile({ currency }))
   }, [dispatch])
 
   const onChangeCountry = useCallback((country: Country) => {
-    dispatch(profileActions.updateProfile({country}))
+    dispatch(profileActions.updateProfile({ country }))
   }, [dispatch])
-  
+
   return (
       <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
           <div className={classNames(cls.ProfilePage, {}, [className])}>
               <ProfilePageHeader/>
               {validateErrors?.length && validateErrors.map((err) => (
-                <Text 
-                  key={err}
-                  theme={TextTheme.ERROR} 
-                  text={validateErrorTranslates[err]} 
+                  <Text
+                      key={err}
+                      theme={TextTheme.ERROR}
+                      text={validateErrorTranslates[err]}
                 />
               ))}
               <ProfileCard
-                data={formData}
-                error={error}
-                isLoading={isLoading}
-                readonly={readonly}
-                onChangeFirstName={onChangeFirstName}
-                onChangeLastName={onChangeLastName}
-                onChangeAge={onChangeAge}
-                onChangeCity={onChangeCity}
-                onChangeUsername={onChangeUsername}
-                onChangeAvatar={onChangeAvatar}
-                onChangeCurrency={onChangeCurrency}
-                onChangeCountry={onChangeCountry}
+                  data={formData}
+                  error={error}
+                  isLoading={isLoading}
+                  readonly={readonly}
+                  onChangeFirstName={onChangeFirstName}
+                  onChangeLastName={onChangeLastName}
+                  onChangeAge={onChangeAge}
+                  onChangeCity={onChangeCity}
+                  onChangeUsername={onChangeUsername}
+                  onChangeAvatar={onChangeAvatar}
+                  onChangeCurrency={onChangeCurrency}
+                  onChangeCountry={onChangeCountry}
               />
           </div>
       </DynamicModuleLoader>
