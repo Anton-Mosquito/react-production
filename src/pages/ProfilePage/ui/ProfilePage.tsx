@@ -84,7 +84,7 @@ const ProfilePage = ({ className = '' }: ProfilePageProps): JSX.Element => {
       <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
           <div className={classNames(cls.ProfilePage, {}, [className])}>
               <ProfilePageHeader/>
-              {validateErrors?.length && validateErrors.map((err) => (
+              {validateErrors?.length > 0 && validateErrors.map((err) => (
                   <Text
                       key={err}
                       theme={TextTheme.ERROR}

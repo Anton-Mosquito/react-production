@@ -3,7 +3,7 @@ import { type User, type UserSchema } from '../types/user'
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage'
 
 const initialState: UserSchema = {
-
+  _inited: false
 }
 
 export const userSlice = createSlice({
@@ -19,6 +19,8 @@ export const userSlice = createSlice({
       if (user != null) {
         state.authData = JSON.parse(user)
       }
+
+      state._inited = true
     },
     logout: (state) => {
       state.authData = undefined

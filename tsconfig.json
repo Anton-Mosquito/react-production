@@ -9,7 +9,7 @@
     // "./config/storybook/main.ts",
     // "./config/storybook/preview.ts",
     // "./config/storybook/webpack.config.ts",
-    "./config",
+    "./config", "src/entities/User/model/selectors/getUserAuthData",
   ],
   "exclude": [
     "node_modules", 
