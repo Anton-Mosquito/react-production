@@ -1,3 +1,6 @@
-import { lazy } from 'react'
+import { type FC, lazy } from 'react'
 
-export const MainPageAsync = lazy(async () => await import('./MainPage'))
+export const MainPageAsync = lazy<FC>(async () =>
+  await new Promise((resolve) => {
+    setTimeout(() => { resolve(import('./MainPage')) }, 1500)
+  }))
