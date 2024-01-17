@@ -3,6 +3,7 @@
 		"scope": "typescriptreact",
 		"prefix": "rc",
 		"body": [
+			"import { memo } from 'react'",
 			"import { classNames } from 'shared/lib/classNames/classNames';",
 			"import cls from  './${1:$TM_FILENAME_BASE}.module.scss';",
 			"import { useTranslation } from 'react-i18next'",
@@ -11,13 +12,13 @@
 			"  className?: string;",
 			"}",
 			"",
-			"export const ${1:$TM_FILENAME_BASE} = ({className = '' }: ${1:$TM_FILENAME_BASE}Props): JSX.Element => {",
+			"export const ${1:$TM_FILENAME_BASE} = memo(({className = '' }: ${1:$TM_FILENAME_BASE}Props): JSX.Element => {",
 			"  const { t } = useTranslation()",
 			"  return (",
 			"    <div className={classNames(cls.${1:$TM_FILENAME_BASE}, {}, [className])}>",
 			"    </div>",
 			"  )",
-			"}",
+			"})",
 		],
 	}
 }

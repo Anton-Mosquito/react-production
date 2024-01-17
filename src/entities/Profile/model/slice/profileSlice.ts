@@ -2,22 +2,11 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { type Profile, type ProfileSchema } from '../types/profile'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
 
 const initialState: ProfileSchema = {
-  data: {
-    first: '',
-    lastname: '',
-    age: 0,
-    currency: Currency.USD,
-    country: Country.Ukraine,
-    city: '',
-    username: '',
-    avatar: ''
-  },
+  data: undefined,
   isLoading: false,
-  error: '',
+  error: undefined,
   readonly: true
 }
 
