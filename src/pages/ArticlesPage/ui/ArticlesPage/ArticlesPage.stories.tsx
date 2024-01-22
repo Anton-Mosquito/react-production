@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ArticlesPage from './ArticlesPage'
+import { Article } from 'entities/Article'
+import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article'
 
 const article: Article = {
   id: '1',

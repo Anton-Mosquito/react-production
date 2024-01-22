@@ -27,6 +27,7 @@ import {
   ArticleImageBlockComponent
 } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 interface ArticleDetailsProps {
   className?: string
@@ -57,11 +58,15 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps): JSX.Elemen
     }
   }, [])
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticleById(id))
-    }
-  }, [dispatch, id])
+  useInitialEffect(() => {
+    dispatch(fetchArticleById(id))
+  })
+
+  // useEffect(() => {
+  //   if (__PROJECT__ !== 'storybook') {
+  //     dispatch(fetchArticleById(id))
+  //   }
+  // }, [dispatch, id])
 
   let content
 
