@@ -20,7 +20,7 @@ export const LoginForm1: Story = {
         isLoading: true
       }
     })
-  ],
+  ]
 }
 
 export const LoginFormWithError: Story = {
@@ -35,5 +35,5 @@ export const LoginFormWithError: Story = {
         password: '123'
       }
     })
-  ],
+  ]
 }

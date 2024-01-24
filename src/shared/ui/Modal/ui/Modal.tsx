@@ -1,6 +1,6 @@
-import { Mods, classNames } from 'shared/lib/classNames/classNames'
+import { type Mods, classNames } from 'shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
-import { useState, type ReactNode, useRef, useEffect, useCallback, MutableRefObject } from 'react'
+import { useState, type ReactNode, useRef, useEffect, useCallback, type MutableRefObject } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
 import { useTheme } from 'app/providers/ThemeProvider'
 
