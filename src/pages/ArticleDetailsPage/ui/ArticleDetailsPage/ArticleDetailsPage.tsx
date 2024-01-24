@@ -39,8 +39,8 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
   const dispatch = useAppDispatch()
 
   const onSendComment = useCallback((text: string) => {
-    dispatch(addCommentForArticle(text));
-}, [dispatch]);
+    dispatch(addCommentForArticle(text))
+  }, [dispatch])
 
   useInitialEffect(() => {
     dispatch(fetchCommentsByArticleId(id))

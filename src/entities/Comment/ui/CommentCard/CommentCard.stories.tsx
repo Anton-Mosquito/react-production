@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 import { CommentCard } from './CommentCard'
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
@@ -17,9 +17,9 @@ export const Normal: Story = {
     comment: {
       id: '1',
       text: 'hello world',
-      user: { id: '1', username: 'name'}
+      user: { id: '1', username: 'name' }
     }
-  },
+  }
 }
 
 export const LoadingComment: Story = {
@@ -27,8 +27,8 @@ export const LoadingComment: Story = {
     comment: {
       id: '1',
       text: 'hello world',
-      user: { id: '1', username: 'name'}
+      user: { id: '1', username: 'name' }
     },
     isLoading: true
-  },
+  }
 }

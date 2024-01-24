@@ -36,41 +36,41 @@ export const ProfilePageHeader = ({ className = '' }: ProfilePageHeaderProps): J
   }, [dispatch])
 
   return (
-    <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
-      <Text title={t('Профиль')} />
-      {canEdit && (
-        <div className={cls.btnsWrapper}>
-          {readonly
-            ? (
-              <Button
-                theme={ThemeButton.OUTLINE}
-                className={cls.editBtn}
-                onClick={onEdit}
+      <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+          <Text title={t('Профиль')} />
+          {canEdit && (
+          <div className={cls.btnsWrapper}>
+              {readonly
+                ? (
+                    <Button
+                        theme={ThemeButton.OUTLINE}
+                        className={cls.editBtn}
+                        onClick={onEdit}
               >
-                {t('Редактировать')}
-              </Button>
-            )
-            : (
-              <>
-                <Button
-                  theme={ThemeButton.OUTLINE_RED}
-                  className={cls.editBtn}
-                  onClick={onCancelEdit}
+                        {t('Редактировать')}
+                    </Button>
+                  )
+                : (
+                    <>
+                        <Button
+                            theme={ThemeButton.OUTLINE_RED}
+                            className={cls.editBtn}
+                            onClick={onCancelEdit}
                 >
-                  {t('Отменить')}
-                </Button>
-                <Button
-                  theme={ThemeButton.OUTLINE}
-                  className={cls.editBtn}
-                  onClick={onSave}
+                            {t('Отменить')}
+                        </Button>
+                        <Button
+                            theme={ThemeButton.OUTLINE}
+                            className={cls.editBtn}
+                            onClick={onSave}
                 >
-                  {t('Сохранить')}
-                </Button>
-              </>
-            )
+                            {t('Сохранить')}
+                        </Button>
+                    </>
+                  )
           }
-        </div>
-      )}
-    </div>
+          </div>
+          )}
+      </div>
   )
 }

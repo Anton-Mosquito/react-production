@@ -16,20 +16,20 @@ export const Normal: Story = {
       {
         id: '1',
         text: 'hello world',
-        user: { id: '1', username: 'name'}
+        user: { id: '1', username: 'name' }
       },
       {
         id: '2',
         text: 'hello world',
-        user: { id: '2', username: 'name1'}
-      },
+        user: { id: '2', username: 'name1' }
+      }
     ]
-  },
+  }
 }
 
 export const Loading: Story = {
   args: {
     comments: [],
     isLoading: true
-  },
+  }
 }

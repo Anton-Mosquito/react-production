@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentForm'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 
 export interface AddCommentFormProps {
   className?: string
@@ -16,10 +16,10 @@ export interface AddCommentFormProps {
 }
 
 const reducers: ReducersList = {
-  addCommentForm: addCommentFormReducer,
-};
+  addCommentForm: addCommentFormReducer
+}
 
-const AddCommentForm = memo(({ className, onSendComment}: AddCommentFormProps): JSX.Element => {
+const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps): JSX.Element => {
   const { t } = useTranslation()
   const text = useSelector(getAddCommentFormText)
   const error = useSelector(getAddCommentFormError)
@@ -31,7 +31,7 @@ const AddCommentForm = memo(({ className, onSendComment}: AddCommentFormProps): 
 
   const onSendHandler = useCallback(() => {
     onSendComment(text ?? '')
-    onCommentTextChange('');
+    onCommentTextChange('')
   }, [onSendComment, onCommentTextChange, text])
 
   return (
@@ -43,9 +43,9 @@ const AddCommentForm = memo(({ className, onSendComment}: AddCommentFormProps): 
                   value={text}
                   onChange={onCommentTextChange}
         />
-              <Button 
-                theme={ThemeButton.OUTLINE}
-                onClick={onSendHandler}
+              <Button
+                  theme={ThemeButton.OUTLINE}
+                  onClick={onSendHandler}
                 >{t('Отправить')}</Button>
           </div>
       </DynamicModuleLoader>

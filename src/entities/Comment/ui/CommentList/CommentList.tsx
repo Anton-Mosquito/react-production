@@ -17,11 +17,11 @@ const CommentList = memo(({ className, comments, isLoading }: CommentListProps):
 
   if (isLoading) {
     return (
-      <div className={classNames(cls.CommentList, {}, [className])}>
-        <CommentCard isLoading/>
-        <CommentCard isLoading/>
-        <CommentCard isLoading/>
-      </div>
+        <div className={classNames(cls.CommentList, {}, [className])}>
+            <CommentCard isLoading/>
+            <CommentCard isLoading/>
+            <CommentCard isLoading/>
+        </div>
     )
   }
   return (
