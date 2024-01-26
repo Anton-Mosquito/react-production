@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ArticleDetailsPage from './ArticleDetailsPage'
-import { type Article } from 'entities/Article'
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article'
+import { ArticleList } from './ArticleList'
+import { type Article, ArticleBlockType, ArticleType, ArticleView } from '../../model/types/article'
 
 const article: Article = {
   id: '1',
@@ -78,16 +77,52 @@ const article: Article = {
 }
 
 const meta = {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/Article/ArticleList',
+  component: ArticleList,
   tags: ['autodocs']
-} satisfies Meta<typeof ArticleDetailsPage>
+} satisfies Meta<typeof ArticleList>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Normal: Story = {
+export const IsLoadingBig: Story = {
   args: {
+    isLoading: true,
+    articles: [],
+    view: ArticleView.BIG
+  }
+}
 
+export const IsLoadingSmall: Story = {
+  args: {
+    isLoading: true,
+    articles: [],
+    view: ArticleView.SMALL
+  }
+}
+
+export const ListSmall: Story = {
+  args: {
+    isLoading: true,
+    articles: new Array(9)
+      .fill(0)
+      .map((item, index) => ({
+        ...article,
+        id: String(index)
+      })),
+    view: ArticleView.SMALL
+  }
+}
+
+export const ListBig: Story = {
+  args: {
+    isLoading: true,
+    articles: new Array(3)
+      .fill(0)
+      .map((item, index) => ({
+        ...article,
+        id: String(index)
+      })),
+    view: ArticleView.BIG
   }
 }

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ArticleDetailsPage from './ArticleDetailsPage'
-import { type Article } from 'entities/Article'
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article'
+import { ArticleListItem } from './ArticleListItem'
+import { type Article, ArticleBlockType, ArticleType, ArticleView } from '../../model/types/article'
 
 const article: Article = {
   id: '1',
@@ -78,16 +77,25 @@ const article: Article = {
 }
 
 const meta = {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/Article/ArticleListItem',
+  component: ArticleListItem,
   tags: ['autodocs']
-} satisfies Meta<typeof ArticleDetailsPage>
+} satisfies Meta<typeof ArticleListItem>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Normal: Story = {
+export const Big: Story = {
   args: {
+    view: ArticleView.BIG,
+    article
 
+  }
+}
+
+export const Small: Story = {
+  args: {
+    view: ArticleView.SMALL,
+    article
   }
 }
