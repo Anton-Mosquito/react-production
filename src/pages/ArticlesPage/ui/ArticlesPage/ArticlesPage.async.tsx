@@ -3,5 +3,5 @@ import { type ArticlesPageProps } from './ArticlesPage'
 
 export const ArticlesPageAsync = lazy<FC<ArticlesPageProps>>(async () =>
   await new Promise((resolve) => {
-    setTimeout(() => { resolve(import('./ArticlesPage')) }, 1500)
+    setTimeout(() => { resolve(import('./ArticlesPage')) }, 400)
   }))
