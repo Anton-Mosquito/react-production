@@ -1,6 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ArticlesPage.module.scss'
-import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
 import {
   ArticleList,
@@ -25,6 +24,10 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView
 } from '../../model/selectors/articlesPageSelector'
+import { Page } from 'shared/ui/Page/Page'
+import {
+  fetchNextArticlesPage
+} from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 
 export interface ArticlesPageProps {
   className?: string
@@ -35,7 +38,6 @@ const reducers: ReducersList = {
 }
 
 const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
-  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
@@ -46,21 +48,34 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
     dispatch(articlesPageActions.setView(view))
   }, [dispatch])
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage())
+  }, [dispatch])
+
   useInitialEffect(() => {
-    dispatch(fetchArticlesList())
     dispatch(articlesPageActions.initState())
+    dispatch(fetchArticlesList({
+      page: 1
+    }))
   })
+
+  if (error) {
+
+  }
 
   return (
       <DynamicModuleLoader reducers={reducers}>
-          <div className={classNames(cls.ArticlesPage, {}, [className])}>
+          <Page
+              className={classNames(cls.ArticlesPage, {}, [className])}
+              onScrollEnd={onLoadNextPart}
+          >
               <ArticleViewSelector view={view} onViewClick={onChangeView}/>
               <ArticleList
                   isLoading={isLoading}
                   articles={articles}
                   view={view}
               />
-          </div>
+          </Page>
       </DynamicModuleLoader>
   )
 }
