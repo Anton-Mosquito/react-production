@@ -18,3 +18,6 @@ export const getArticlesPageLimit = (state: StateSchema): number =>
 
 export const getArticlesPageHasMore = (state: StateSchema): boolean | undefined =>
   state.articlesPage?.hasMore
+
+export const getArticlesPageInited = (state: StateSchema): boolean | undefined =>
+  state.articlesPage?._inited

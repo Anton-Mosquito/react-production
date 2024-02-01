@@ -3,6 +3,7 @@ import { useDispatch, useStore } from 'react-redux'
 import { type ReduxStoreWithManager } from 'app/providers/StoreProvider'
 import { type StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema'
 import { type Reducer } from '@reduxjs/toolkit'
+import { name } from 'webpack'
 
 export type ReducersList = {
   [name in StateSchemaKey]?: Reducer
@@ -23,9 +24,14 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
+    const mountedReducers = store.reducerManager.getMountedReducers()
     Object.entries(reducers).forEach(([name, reducer]) => {
-      store.reducerManager.add(name as StateSchemaKey, reducer)
-      dispatch({ type: `@INIT ${name} reducer` })
+      const mounted = mountedReducers[name as StateSchemaKey]
+      // add new reducer
+      if (mounted) {
+        store.reducerManager.add(name as StateSchemaKey, reducer)
+        dispatch({ type: `@INIT ${name} reducer` })
+      }
     })
 
     return () => {
