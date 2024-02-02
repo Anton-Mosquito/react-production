@@ -9,12 +9,15 @@ import { type ArticleDetailsSchema } from 'entities/Article'
 import { type ProfileSchema } from 'entities/Profile'
 import { type UserSchema } from 'entities/User'
 import { type LoginSchema } from 'features/AuthByUsername'
+import { type UISchema } from 'features/UI'
 import { type AddCommentFormSchema } from 'features/addCommentForm'
 import { type ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage'
 import { type ArticlesPagesSchema } from 'pages/ArticlesPage'
 
 export interface StateSchema {
   user: UserSchema
+  ui: UISchema
+
   // Asynchronous reducers
   loginForm?: LoginSchema
   profile?: ProfileSchema

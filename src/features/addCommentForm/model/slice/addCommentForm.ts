@@ -32,4 +32,7 @@ export const addCommentFormSchemaSlice = createSlice({
   // }
 })
 
-export const { actions: addCommentFormActions, reducer: addCommentFormReducer } = addCommentFormSchemaSlice
+export const {
+  actions: addCommentFormActions,
+  reducer: addCommentFormReducer
+} = addCommentFormSchemaSlice
