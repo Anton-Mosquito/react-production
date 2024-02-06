@@ -4,6 +4,8 @@ import cls from './ArticleList.module.scss'
 import { type Article, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
+import { Text, TextSize } from 'shared/ui/Text/Text'
+import { useTranslation } from 'react-i18next'
 
 interface ArticleListProps {
   className?: string
@@ -25,6 +27,7 @@ const ArticleList = memo(({
   isLoading,
   view = ArticleView.SMALL
 }: ArticleListProps): JSX.Element => {
+  const { t } = useTranslation()
   const renderArticle = (article: Article): JSX.Element => {
     return (
         <ArticleListItem
@@ -33,6 +36,14 @@ const ArticleList = memo(({
             className={cls.card}
             key={article.id}
         />
+    )
+  }
+
+  if (!isLoading && (articles.length > 0)) {
+    return (
+        <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+            <Text title={t('Статьи не найдени')} size={TextSize.L}/>
+        </div>
     )
   }
   return (

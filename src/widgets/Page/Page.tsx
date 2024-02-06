@@ -13,7 +13,7 @@ import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle'
 interface PageProps {
   className?: string
   children: ReactNode
-  onScrollEnd: () => void
+  onScrollEnd?: () => void
 }
 
 const Page = memo(({ className, children, onScrollEnd }: PageProps): JSX.Element => {
@@ -48,7 +48,7 @@ const Page = memo(({ className, children, onScrollEnd }: PageProps): JSX.Element
           onScroll={onScroll}
       >
           { children }
-          <div ref={triggerRef}/>
+          {(onScrollEnd != null) ? <div className={cls.trigger} ref={triggerRef}/> : null}
       </section>
   )
 })
