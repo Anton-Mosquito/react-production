@@ -4,6 +4,7 @@ import { memo } from 'react'
 
 export enum TextTheme {
   PRIMARY = 'primary',
+  INVERTED = 'inverted',
   ERROR = 'error'
 }
 
@@ -28,7 +29,7 @@ interface TextProps {
 }
 
 const Text = memo(({
-  className = '',
+  className,
   title = '',
   text = '',
   theme = TextTheme.PRIMARY,

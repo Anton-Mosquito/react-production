@@ -6,11 +6,14 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserAuthData, userActions } from 'entities/User'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLinks'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 
 interface NavbarProps {
   className?: string
 }
-const Navbar = memo(({ className = '' }: NavbarProps): JSX.Element => {
+const Navbar = memo(({ className }: NavbarProps): JSX.Element => {
   const { t } = useTranslation()
   const [isAuthModal, setIsAuthModal] = useState(false)
   const authData = useSelector(getUserAuthData)
@@ -31,11 +34,23 @@ const Navbar = memo(({ className = '' }: NavbarProps): JSX.Element => {
   if (authData != null) {
     return (
         <header className={classNames(cls.Navbar, {}, [className])}>
+            <Text
+                className={cls.appName}
+                title={t('Some title')}
+                theme={TextTheme.INVERTED}
+            />
+            <AppLink
+                className={cls.createBtn}
+                to={RoutePath.article_create}
+                theme={AppLinkTheme.SECONDARY}
+            >
+                {t('Создать статью')}
+            </AppLink>
             <Button
                 theme={ThemeButton.CLEAR_INVERTED}
                 className={cls.links}
                 onClick={onLogOut}
-          >
+            >
                 {t('Вийти')}
             </Button>
         </header>

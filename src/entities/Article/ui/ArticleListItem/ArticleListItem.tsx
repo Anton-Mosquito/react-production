@@ -25,7 +25,7 @@ interface ArticleListItemProps {
   target?: HTMLAttributeAnchorTarget
 }
 
-const ArticleListItem = memo(({ className, article, view }: ArticleListItemProps): JSX.Element => {
+const ArticleListItem = memo(({ className, article, view, target }: ArticleListItemProps): JSX.Element => {
   const { t } = useTranslation()
 
   const types = <Text className={cls.types} text={article.type.join(', ')}/>
