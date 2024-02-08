@@ -13,3 +13,4 @@ export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelecto
 export { ArticleSortField } from './model/types/article'
 export { ArticleType } from './model/types/article'
 export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs'
+export { getArticleDetailsData } from './model/selectors/articleDetails'
