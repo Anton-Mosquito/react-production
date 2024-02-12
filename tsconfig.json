@@ -9,8 +9,7 @@
     // "./config/storybook/main.ts",
     // "./config/storybook/preview.ts",
     // "./config/storybook/webpack.config.ts",
-    "./config/*/*.ts",
-    "./config/*/*.tsx",
+    "./config",
   ],
   "exclude": [
     "node_modules", 
