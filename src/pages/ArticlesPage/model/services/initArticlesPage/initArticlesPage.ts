@@ -37,6 +37,6 @@ ThunkConfig<string>
     }
 
     dispatch(articlesPageActions.initState())
-    dispatch(fetchArticlesList())
+    await dispatch(fetchArticlesList({}))
   }
 )
