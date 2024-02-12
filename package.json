@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "browser": "client",
   "scripts": {
     "start": "webpack serve --env port=3333",
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
