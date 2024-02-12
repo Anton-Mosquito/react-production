@@ -1,7 +1,6 @@
 import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './CommentCard.module.scss'
-import { useTranslation } from 'react-i18next'
 import { type Comment } from '../../model/types/comments'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Text } from 'shared/ui/Text/Text'
@@ -16,8 +15,6 @@ interface CommentCardProps {
 }
 
 const CommentCard = memo(({ className, comment, isLoading }: CommentCardProps): JSX.Element => {
-  const { t } = useTranslation()
-
   if (isLoading) {
     return (
         <div className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
