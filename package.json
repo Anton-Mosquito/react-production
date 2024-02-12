@@ -17,7 +17,7 @@
     "test:ui": "npm loki test",
     "test:ui:ok": "npm loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
-    "test:ui:html": "npx reg-cli .loki/current  .loki/reference  .loki/reference -R .loki/report.html",
+    "test:ui:html": "npx reg-cli .loki/current .loki/reference .loki/reference -R .loki/report.html",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
     "prepare": "husky install"
