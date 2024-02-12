@@ -22,6 +22,7 @@ export function createReducerManager
   return {
     getReducerMap: () => reducers,
     getMountedReducers: () => mountedReducers,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     reduce: (state: StateSchema, action: Action) => {
       if (keysToRemove.length > 0) {
@@ -33,6 +34,7 @@ export function createReducerManager
         keysToRemove = []
       }
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       return combinedReducer(state, action)
     },

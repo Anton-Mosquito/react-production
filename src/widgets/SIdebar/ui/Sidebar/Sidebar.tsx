@@ -12,7 +12,7 @@ interface SidebarProps {
   className?: string
 }
 
-const Sidebar = memo(({ className = '' }: SidebarProps): JSX.Element => {
+const Sidebar = memo(({ className }: SidebarProps): JSX.Element => {
   const [collapsed, setCollapsed] = useState(false)
   const sidebarItemsList = useSelector(getSidebarItems)
   const onToggle = (): void => { setCollapsed(prev => !prev) }
@@ -22,7 +22,7 @@ const Sidebar = memo(({ className = '' }: SidebarProps): JSX.Element => {
           key={item.path}
           item={item}
           collapsed={collapsed}
-        />
+      />
   )), [collapsed, sidebarItemsList])
 
   return (

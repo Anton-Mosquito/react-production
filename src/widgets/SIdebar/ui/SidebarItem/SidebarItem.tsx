@@ -11,7 +11,7 @@ interface SidebarItemProps {
   collapsed: boolean
 }
 
-export const SidebarItem = ({ item, collapsed }: SidebarItemProps) => {
+export const SidebarItem = ({ item, collapsed }: SidebarItemProps): JSX.Element | null => {
   const { t } = useTranslation()
   const isAuth = useSelector(getUserAuthData)
 
