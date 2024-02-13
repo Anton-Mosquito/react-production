@@ -16,6 +16,8 @@ interface PageProps {
   onScrollEnd?: () => void
 }
 
+export const PAGE_ID = 'PAGE_ID'
+
 const Page = memo(({ className, children, onScrollEnd }: PageProps): JSX.Element => {
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
@@ -46,6 +48,7 @@ const Page = memo(({ className, children, onScrollEnd }: PageProps): JSX.Element
           className={classNames(cls.Page, {}, [className])}
           ref={wrapperRef}
           onScroll={onScroll}
+          id={PAGE_ID}
       >
           { children }
           {(onScrollEnd != null) ? <div className={cls.trigger} ref={triggerRef}/> : null}
