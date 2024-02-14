@@ -42,7 +42,8 @@ module.exports = {
   plugins: [
     'react',
     'i18next',
-    'react-hooks'
+    'react-hooks',
+    "custom-path-checker"
   ],
   rules: {
     'react/jsx-indent': [2, 4],
@@ -62,6 +63,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "error", // Checks effect dependencies
     "no-undef": "off",
+    'custom-path-checker/path-checker': 'error'
     // "react/no-array-index-key": "off"
     //"arrow-body-style": 'off'
   },

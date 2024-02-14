@@ -83,7 +83,7 @@ const ArticleList = memo(({
             scrollTop
           }) => (
               <div
-                  ref={registerChild}
+                  // ref={registerChild}
                   className={classNames(cls.ArticleList, {}, [className, cls[view]])}
               >
                   <List
