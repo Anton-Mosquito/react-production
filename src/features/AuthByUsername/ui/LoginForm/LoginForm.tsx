@@ -32,7 +32,7 @@ const initialReducers: ReducersList = {
 //   SERVER_ERROR = '',
 // }
 
-const LoginForm = memo(({ className = '', onSuccess }: LoginFormProps): JSX.Element => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps): JSX.Element => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const username = useSelector(getLoginUserName)

@@ -28,6 +28,7 @@ import {
 } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { HStack, VStack } from 'shared/ui/Stack'
 
 interface ArticleDetailsProps {
   className?: string
@@ -90,27 +91,31 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps): JSX.Elemen
   } else {
     content = (
         <>
-            <div className={cls.avatarWrapper}>
+            <HStack
+                justify='center'
+                max
+            >
                 <Avatar
                     className={cls.avatar}
                     size={200}
                     src={article?.img}
                 />
-            </div>
-            <Text
-                className={cls.title}
-                title={article?.title}
-                text={article?.subtitle}
-                size={TextSize.L}
+            </HStack>
+            <VStack gap='4' max>
+                <Text
+                    title={article?.title}
+                    text={article?.subtitle}
+                    size={TextSize.L}
             />
-            <div className={cls.articleInfo}>
-                <Icon className={cls.icon} Svg={EyeIcon}/>
-                <Text text={String(article?.views)}/>
-            </div>
-            <div className={cls.articleInfo}>
-                <Icon className={cls.icon} Svg={CalendarIcon}/>
-                <Text text={article?.createdAt}/>
-            </div>
+                <HStack gap="8">
+                    <Icon Svg={EyeIcon}/>
+                    <Text text={String(article?.views)}/>
+                </HStack>
+                <HStack gap="8">
+                    <Icon Svg={CalendarIcon}/>
+                    <Text text={article?.createdAt}/>
+                </HStack>
+            </VStack>
             {article?.blocks.map(renderBlock)}
         </>
     )
@@ -118,9 +123,12 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps): JSX.Elemen
 
   return (
       <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-          <div className={classNames(cls.ArticleDetails, {}, [className])}>
+          <VStack
+              className={classNames(cls.ArticleDetails, {}, [className])}
+              gap='16'
+          >
               { content }
-          </div>
+          </VStack>
       </DynamicModuleLoader>
   )
 })
