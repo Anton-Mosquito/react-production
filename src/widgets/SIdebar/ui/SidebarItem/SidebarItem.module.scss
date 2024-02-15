@@ -1,5 +1,4 @@
 .item {
-  margin-top: 10px;
   display: flex;
   align-items: center;
 }
@@ -13,11 +12,10 @@
   fill: var(--inverted-primary-color);
 }
 
-
 .collapsed {
   .link {
-    opacity: 0;
-    transition: 0.2s opacity;
-    width: 0;
+      opacity: 0;
+      transition: 0.2s opacity;
+      width: 0;
   }
 }

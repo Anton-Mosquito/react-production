@@ -14,29 +14,30 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     buildLocales: ''
   }
 
-  config.resolve!.modules?.push(paths.src)
-  config.resolve!.extensions?.push('.ts', '.tsx')
+  config.resolve?.modules?.push(paths.src)
+  config.resolve?.extensions?.push('.ts', '.tsx')
 
-  // eslint-disable-next-line no-param-reassign
-  // @ts-expect-error
-  config.module!.rules = config.module!.rules!.map((rule: RuleSetRule) => {
-    if (rule.test && (typeof rule.test === 'string' || rule.test instanceof RegExp)) {
-      const test = rule.test.toString()
-      if (test.includes('svg')) {
-        return { ...rule, exclude: /\.svg$/i }
+  if (config.module?.rules) {
+    config.module.rules = (config.module?.rules as RuleSetRule[]).map((rule) => {
+      if (rule.test != null && (typeof rule.test === 'string' || rule.test instanceof RegExp)) {
+        const test = rule.test.toString()
+        if (test.includes('svg')) {
+          return { ...rule, exclude: /\.svg$/i }
+        }
       }
-    }
 
-    return rule
-  })
+      return rule
+    })
 
-  config.module!.rules.push({
-    test: /\.svg$/,
-    use: ['@svgr/webpack']
-  })
-  config.module!.rules.push(buildCssLoader(true))
+    config.module?.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack']
+    })
 
-  config.plugins!.push(new DefinePlugin({
+    config.module?.rules.push(buildCssLoader(true))
+  }
+
+  config.plugins?.push(new DefinePlugin({
     __IS_DEV__: JSON.stringify(true),
     __API__: JSON.stringify(''),
     __PROJECT__: JSON.stringify('storybook')
