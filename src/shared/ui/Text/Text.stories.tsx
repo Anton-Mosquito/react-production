@@ -63,10 +63,29 @@ export const OnlyTextDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)]
 }
 
+export const SizeS: Story = {
+  args: {
+    className: '',
+    title: 'Title sizeS',
+    text: 'SizeS',
+    size: TextSize.S
+  }
+}
+
+export const SizeM: Story = {
+  args: {
+    className: '',
+    title: 'Title sizeM',
+    text: 'SizeM',
+    size: TextSize.M
+  }
+}
+
 export const SizeL: Story = {
   args: {
     className: '',
-    text: 'SizeM',
+    title: 'Title sizeL',
+    text: 'SizeL',
     size: TextSize.L
   }
 }
