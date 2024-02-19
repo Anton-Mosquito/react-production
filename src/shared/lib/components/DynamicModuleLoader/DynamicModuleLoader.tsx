@@ -17,7 +17,7 @@ interface DynamicModuleLoaderProps {
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = ({
   children,
   reducers,
-  removeAfterUnmount = false
+  removeAfterUnmount = true
 }) => {
   const store = useStore() as ReduxStoreWithManager
   const dispatch = useDispatch()
@@ -27,7 +27,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = ({
     Object.entries(reducers).forEach(([name, reducer]) => {
       const mounted = mountedReducers[name as StateSchemaKey]
       // add new reducer
-      if (mounted) {
+      if (!mounted) {
         store.reducerManager.add(name as StateSchemaKey, reducer)
         dispatch({ type: `@INIT ${name} reducer` })
       }
