@@ -38,6 +38,7 @@ const CurrencySelect = memo(({
           label={t('Укажите валюту')}
           readonly={readonly}
           onChange={onChangeHandler}
+          direction='top right'
         />
   )
 })

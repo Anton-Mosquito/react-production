@@ -4,14 +4,13 @@ import cls from './ListBox.module.scss'
 import { Listbox as HListBox } from '@headlessui/react'
 import { Button } from '../Button/Button'
 import { HStack } from '../Stack'
+import { type DropdownDirection } from 'shared/types/ui'
 
 export interface ListBoxItem {
   value: string
   content: ReactNode
   disabled?: boolean
 }
-
-type DropdownDirection = 'top' | 'bottom'
 
 interface ListBoxProps {
   items?: ListBoxItem[]
@@ -25,8 +24,10 @@ interface ListBoxProps {
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
-  bottom: cls.optionsBottom,
-  top: cls.optionsTop
+  'bottom left': cls.optionsBottomLeft,
+  'bottom right': cls.optionsBottomRight,
+  'top right': cls.optionsTopRight,
+  'top left': cls.optionsTopLeft
 }
 
 const ListBox = memo(({
@@ -36,7 +37,7 @@ const ListBox = memo(({
   defaultValue,
   readonly,
   onChange,
-  direction = 'bottom',
+  direction = 'top right',
   label
 }: ListBoxProps): JSX.Element => {
   const optionsClasses = [mapDirectionClass[direction]]

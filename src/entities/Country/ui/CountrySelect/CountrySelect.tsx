@@ -35,6 +35,7 @@ const CountrySelect = memo(({ className, value, onChange, readonly }: CountrySel
           items={options}
           onChange={onChangeHandler}
           readonly={readonly}
+          direction='top right'
       />
   )
 })
