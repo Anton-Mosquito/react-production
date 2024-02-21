@@ -51,7 +51,7 @@ const ListBox = memo(({
               onChange={onChange}
               disabled={readonly}
           >
-              <HListBox.Button className={cls.trigger} disabled={readonly}>
+              <HListBox.Button className={cls.trigger}>
                   <Button disabled={readonly}>
                       {value ?? defaultValue}
                   </Button>
@@ -63,7 +63,7 @@ const ListBox = memo(({
                           value={item.value}
                           disabled={item.disabled}
                           as={Fragment}
-                  >
+                      >
                           {({ active, selected }) => (
                               <li className={classNames(
                                 cls.item,
