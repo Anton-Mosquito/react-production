@@ -27,7 +27,7 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = ({
-  className = '',
+  className,
   data,
   isLoading,
   error,

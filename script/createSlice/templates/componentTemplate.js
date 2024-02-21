@@ -19,7 +19,7 @@ const ${componentName} = memo(({ className }: ${componentName}Props) => {
     );
 });
 
-${componentName}.displayName = ${componentName};
+${componentName}.displayName = '${componentName}';
 
 export {${componentName}}
 `;
