@@ -20,7 +20,8 @@
     "test:ui:html": "npx reg-cli .loki/current .loki/reference .loki/reference -R .loki/report.html",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:slice": "node ./script/createSlice/index.js"
   },
   "keywords": [],
   "author": "",
