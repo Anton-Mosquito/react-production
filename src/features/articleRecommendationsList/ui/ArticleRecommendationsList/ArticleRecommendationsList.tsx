@@ -12,9 +12,9 @@ interface ArticleRecommendationsListProps {
 
 const ArticleRecommendationsList = memo(({ className }: ArticleRecommendationsListProps) => {
   const { t } = useTranslation()
-  const { isLoading, data: article, error } = useArticleRecommendationsList(3)
+  const { isLoading, data: articles, error } = useArticleRecommendationsList(3)
 
-  if (isLoading || error) {
+  if (isLoading || (error != null) || articles === undefined) {
     return null
   }
 
@@ -25,9 +25,10 @@ const ArticleRecommendationsList = memo(({ className }: ArticleRecommendationsLi
               title={t('Рекомендуем')}
           />
           <ArticleList
-              articles={article}
+              articles={articles}
               isLoading={isLoading}
               target='_blank'
+              virtualized={false}
           />
       </VStack>
   )
