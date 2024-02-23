@@ -1,11 +1,11 @@
-import React, { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Navbar.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserAuthData, userActions } from 'entities/User'
+import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLinks'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
@@ -20,6 +20,8 @@ const Navbar = memo(({ className }: NavbarProps): JSX.Element => {
   const [isAuthModal, setIsAuthModal] = useState(false)
   const authData = useSelector(getUserAuthData)
   const dispatch = useDispatch()
+  const isAdmin = useSelector(isUserAdmin)
+  const isManager = useSelector(isUserManager)
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false)
@@ -32,6 +34,8 @@ const Navbar = memo(({ className }: NavbarProps): JSX.Element => {
   const onLogOut = useCallback(() => {
     dispatch(userActions.logout())
   }, [dispatch])
+
+  const isAdminPanelAvailable = isAdmin || isManager
 
   if (authData != null) {
     return (
@@ -52,6 +56,12 @@ const Navbar = memo(({ className }: NavbarProps): JSX.Element => {
                 className={cls.dropdown}
                 direction='bottom left'
                 items={[
+                  ...(isAdminPanelAvailable
+                    ? [{
+                        content: t('Админка'),
+                        href: RoutePath.admin_panel
+                      }]
+                    : []),
                   {
                     content: t('Профиль'),
                     href: RoutePath.profile + authData.id
