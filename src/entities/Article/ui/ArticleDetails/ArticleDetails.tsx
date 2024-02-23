@@ -63,12 +63,6 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps): JSX.Elemen
     dispatch(fetchArticleById(id))
   })
 
-  // useEffect(() => {
-  //   if (__PROJECT__ !== 'storybook') {
-  //     dispatch(fetchArticleById(id))
-  //   }
-  // }, [dispatch, id])
-
   let content
 
   if (isLoading) {
@@ -126,6 +120,7 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps): JSX.Elemen
           <VStack
               className={classNames(cls.ArticleDetails, {}, [className])}
               gap='16'
+              max
           >
               { content }
           </VStack>
