@@ -16,7 +16,7 @@ interface EditProfileCardHeaderProps {
   className?: string
 }
 
-const EditProfileCardHeader = memo(({ className = '' }: EditProfileCardHeaderProps): JSX.Element => {
+const EditProfileCardHeader = memo(({ className }: EditProfileCardHeaderProps): JSX.Element => {
   const { t } = useTranslation('profile')
   const authData = useSelector(getUserAuthData)
   const profileData = useSelector(getProfileData)
