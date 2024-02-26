@@ -1,4 +1,4 @@
-import { type HTMLAttributeAnchorTarget, memo, type ReactNode } from 'react'
+import { type HTMLAttributeAnchorTarget, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
 import { type Article, ArticleView } from '../../model/types/article'

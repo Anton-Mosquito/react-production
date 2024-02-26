@@ -1,20 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ArticleDetailsComments } from './ArticleDetailsComments'
+import { ArticleInfiniteList } from './ArticleInfiniteList'
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-  title: 'feature/ArticleDetailsComments',
-  component: ArticleDetailsComments,
+  title: 'pages/ArticleInfiniteList',
+  component: ArticleInfiniteList,
   tags: ['autodocs']
-} satisfies Meta<typeof ArticleDetailsComments>
+} satisfies Meta<typeof ArticleInfiniteList>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Normal: Story = {
-  args: {
-    id: '1'
-  },
+  args: {},
   decorators: [
     StoreDecorator({})
   ]

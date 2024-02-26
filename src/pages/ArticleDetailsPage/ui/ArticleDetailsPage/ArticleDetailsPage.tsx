@@ -35,15 +35,15 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps): JSX.Element
     dispatch(fetchArticleRecommendations())
   })
 
-  if (!id) {
-    return (
-        <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-            {t('Статья не найдена')}
-        </Page>
-    )
-  }
+  // if (!id) {
+  //   return (
+  //       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+  //           {t('Статья не найдена')}
+  //       </Page>
+  //   )
+  // }
   return (
-      <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
           <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
               <VStack gap='16' max>
                   <ArticleDetailsPageHeader/>
