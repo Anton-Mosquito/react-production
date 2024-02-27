@@ -3,9 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
 import { useTranslation } from 'react-i18next'
 import {
-  ArticleView,
   type Article,
-  ArticleBlockType,
   type ArticleTextBlock
 } from '../../model/types/article'
 import { Text } from 'shared/ui/Text/Text'
@@ -17,6 +15,7 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLinks'
+import { ArticleView, ArticleBlockType } from '../../model/consts/articleConsts'
 
 interface ArticleListItemProps {
   className?: string
