@@ -5,10 +5,10 @@ import {
 } from '@reduxjs/toolkit'
 import { type StateSchema } from 'app/providers/StoreProvider'
 import {
-  ArticleView,
   type Article,
   ArticleSortField,
-  ArticleType
+  ArticleType,
+  ArticleView
 } from 'entities/Article'
 import { type ArticlesPagesSchema } from '../types/articlesPageSchema'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
