@@ -1,8 +1,14 @@
 import type webpack from 'webpack'
+import { type BuildOptions } from '../types/config'
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin'
 
-export const buildBabelLoader = (isDev: boolean): webpack.RuleSetRule => {
+interface BuildBabelLoaderProps extends Partial<BuildOptions> {
+  isTSX?: boolean
+}
+
+export const buildBabelLoader = ({ isDev, isTSX }: BuildBabelLoaderProps): webpack.RuleSetRule => {
   return {
-    test: /\.(js|jsx|ts|tsx)$/,
+    test: isTSX ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
@@ -19,7 +25,20 @@ export const buildBabelLoader = (isDev: boolean): webpack.RuleSetRule => {
               keyAsDefaultValue: true
             }
           ],
-          isDev && require.resolve('react-refresh/babel')
+          isTSX && [
+            babelRemovePropsPlugin,
+            {
+              props: ['data-testid']
+            }
+          ],
+          isDev && require.resolve('react-refresh/babel'),
+          [
+            '@babel/plugin-transform-typescript',
+            {
+              isTSX
+            }
+          ],
+          ['@babel/plugin-transform-runtime']
         ].filter(Boolean)
       }
     }
