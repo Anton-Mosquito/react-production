@@ -6,5 +6,7 @@ interface PortalProps {
   element?: HTMLElement
 }
 
-export const Portal = ({ children, element = document.body }: PortalProps): JSX.Element =>
-  createPortal(children, element)
+export const Portal = ({
+  children,
+  element = document.body
+}: PortalProps): JSX.Element => createPortal(children, element)
