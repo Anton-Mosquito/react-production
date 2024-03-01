@@ -4,12 +4,12 @@ import cls from './Overlay.module.scss'
 
 interface OverlayProps {
   className?: string
-  onCLick?: () => void
+  onClick?: () => void
 }
 
-export const Overlay = memo(({ className, onCLick }: OverlayProps): JSX.Element => {
+export const Overlay = memo(({ className, onClick }: OverlayProps): JSX.Element => {
   return (
-      <div className={classNames(cls.Overlay, {}, [className])} onClick={onCLick}/>
+      <div className={classNames(cls.Overlay, {}, [className])} onClick={onClick}/>
   )
 })
 
