@@ -10,6 +10,7 @@
     // "./config/storybook/preview.ts",
     // "./config/storybook/webpack.config.ts",
     "./config",
+    "./script"
   ],
   "exclude": [
     "node_modules", 
@@ -25,7 +26,7 @@
     "moduleResolution": "node",
     "baseUrl": ".", // absolute import 
     "paths": {
-      "*": ["./src/*"]
+      "@/*": ["./src/*"]
     },
     "strict": true,
     "strictNullChecks": true,
