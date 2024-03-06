@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, type PropsWithChildren, type ReactNode } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Drawer.module.scss'
-import { useTheme } from 'app/providers/ThemeProvider'
+import { useTheme } from '@/app/providers/ThemeProvider'
 import { Portal } from '../Portal/Portal'
 import { Overlay } from '../Overlay/Overlay'
-import { useAnimationLibs } from 'shared/lib/components/AnimationProvider'
+import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider'
 
 interface DrawerProps extends PropsWithChildren {
   className?: string

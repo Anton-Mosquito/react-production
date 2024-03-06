@@ -1,10 +1,10 @@
 import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
-import { userReducer } from 'entities/User'
+import { userReducer } from '@/entities/User'
 import { createReducerManager } from './reducerManager'
-import { $api } from 'shared/api/api'
-import { uiReducer } from 'features/UI'
-import { rtkApi } from 'shared/api/rtkApi'
+import { $api } from '@/shared/api/api'
+import { uiReducer } from '@/features/UI'
+import { rtkApi } from '@/shared/api/rtkApi'
 
 export function createReduxStore (
   initialState?: StateSchema,

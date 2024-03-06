@@ -1,13 +1,13 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import { memo, useCallback } from 'react'
-import { type Country } from 'entities/Country'
-import { type Currency } from 'entities/Currency'
+import { type Country } from '@/entities/Country'
+import { type Currency } from '@/entities/Currency'
 import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { Text, TextTheme } from '@/shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
-import { ProfileCard } from 'entities/Profile'
+import { ProfileCard } from '@/entities/Profile'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
@@ -16,11 +16,11 @@ import { getProfileValidateErrors } from '../../model/selectors/getProfileValida
 import {
   DynamicModuleLoader,
   type ReducersList
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { profileReducer, profileActions } from '../../model/slice/profileSlice'
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
 import { EditProfileCardHeader } from '../EditProfileCardHeader/EditProfileCardHeader'
-import { VStack } from 'shared/ui/Stack'
+import { VStack } from '@/shared/ui/Stack'
 import { ValidateProfileError } from '../../model/consts/consts'
 
 interface EditableProfileCardProps {
