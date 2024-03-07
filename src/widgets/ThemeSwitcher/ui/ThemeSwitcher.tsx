@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ThemeSwitcher.module.scss'
 import { Theme, useTheme } from '@/app/providers/ThemeProvider'
@@ -10,9 +10,7 @@ interface ThemeSwitcherProps {
   className?: string
 }
 
-const ThemeSwitcher = memo((
-  { className = '' }: ThemeSwitcherProps
-): JSX.Element => {
+const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme()
 
   return (
@@ -20,11 +18,11 @@ const ThemeSwitcher = memo((
           theme={ThemeButton.CLEAR}
           className={classNames(cls.ThemeSwitcher, {}, [className])}
           onClick={toggleTheme}
-    >
+      >
           { theme === Theme.LIGHT
             ? <LightIcon width={24} height={24}/>
             : <DarkIcon width={24} height={24}/>
-        }
+          }
       </Button>
   )
 })
