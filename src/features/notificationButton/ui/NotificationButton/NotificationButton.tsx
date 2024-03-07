@@ -13,7 +13,7 @@ interface NotificationButtonProps {
   className?: string
 }
 
-const NotificationButton = memo(({ className }: NotificationButtonProps): JSX.Element => {
+const NotificationButton = memo(({ className }: NotificationButtonProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const onOpenDrawer = useCallback(() => {
