@@ -2,11 +2,11 @@
   cursor: pointer;
   color: var(--primary-color);
   padding: 6px 15px;
-  
+
   &:hover {
-    opacity: .8;
-    fill-opacity: .8;
-    stroke-opacity: .8;
+      opacity: 0.8;
+      fill-opacity: 0.8;
+      stroke-opacity: 0.8;
   }
 }
 
@@ -82,4 +82,8 @@
 
 .disabled {
   opacity: 0.5;
+}
+
+.fullWidth {
+  width: 100%;
 }
