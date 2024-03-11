@@ -51,7 +51,7 @@ const Dropdown = memo(({
                       <Menu.Item
                           as={AppLink}
                           disabled={item.disabled}
-                          key={index}
+                          key={`dropdwon-key${index}`}
                           to={item.href}
                       >
                           {content}
@@ -62,7 +62,7 @@ const Dropdown = memo(({
                     <Menu.Item
                         as={Fragment}
                         disabled={item.disabled}
-                        key={index}
+                        key={`dropdwon-key${index}`}
                     >
                         {content}
                     </Menu.Item>
