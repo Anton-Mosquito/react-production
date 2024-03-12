@@ -1,5 +1,4 @@
 import { memo, useCallback, useState } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/shared/ui/Card/Card'
 import { HStack, VStack } from '@/shared/ui/Stack'
@@ -18,6 +17,7 @@ interface RatingCardProps {
   hasFeedback?: boolean
   onCancel?: (starsCount: number) => void
   onAccept?: (starsCount: number, feedbackTitle?: string) => void
+  rate?: number
 }
 
 export const RatingCard = memo(({
@@ -26,12 +26,13 @@ export const RatingCard = memo(({
   feedbackTitle,
   hasFeedback,
   onCancel,
-  onAccept
+  onAccept,
+  rate = 0
 }: RatingCardProps): JSX.Element => {
   const { t } = useTranslation()
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [starsCount, setStarsCount] = useState(0)
+  const [starsCount, setStarsCount] = useState(rate)
   const [feedback, setFeedback] = useState('')
 
   const onSelectStars = useCallback((selectedStarsCount: number) => {
@@ -66,10 +67,14 @@ export const RatingCard = memo(({
   )
 
   return (
-      <Card className={classNames(cls.RatingCard, {}, [className])}>
+      <Card className={className} max>
           <VStack align='center' gap='8'>
-              <Text title={title}/>
-              <StarRating size={40} onSelect={onSelectStars}/>
+              <Text title={starsCount ? t('Спасибо за оценку!') : title}/>
+              <StarRating
+                  size={40}
+                  selectedStars={starsCount}
+                  onSelect={onSelectStars}
+              />
           </VStack>
           <BrowserView>
               <Modal isOpen={isModalOpen} lazy>
