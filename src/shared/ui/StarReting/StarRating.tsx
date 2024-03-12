@@ -19,7 +19,7 @@ export const StarRating = memo(({
   selectedStars = 0,
   onSelect
 }: StarRatingProps): JSX.Element => {
-  const [currentStartCount, setCurrentStarsCount] = useState(0)
+  const [currentStartCount, setCurrentStarsCount] = useState(selectedStars)
   const [isSelected, setIsSelected] = useState(Boolean(selectedStars))
 
   const onHover = (starsCount: number) => () => {
