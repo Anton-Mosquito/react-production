@@ -1,17 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Page } from './Page'
+import { AvatarDropdown } from './AvatarDropdown'
 
 const meta = {
-  title: 'widgets/Page',
-  component: Page,
+  title: 'feature/avatarDropdown/AvatarDropdown',
+  component: AvatarDropdown,
   tags: ['autodocs']
-} satisfies Meta<typeof Page>
+} satisfies Meta<typeof AvatarDropdown>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Normal: Story = {
   args: {
-    children: '<div></div>'
   }
 }
