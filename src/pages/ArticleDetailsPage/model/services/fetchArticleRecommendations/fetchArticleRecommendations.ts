@@ -4,7 +4,7 @@ import { type Article } from '@/entities/Article'
 
 export const fetchArticleRecommendations = createAsyncThunk<
 Article[],
-void,
+undefined,
 ThunkConfig<string>
 >(
   'articleDetailsPage/fetchArticleRecommendations',

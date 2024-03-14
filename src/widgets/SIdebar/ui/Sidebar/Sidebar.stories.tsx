@@ -5,7 +5,7 @@ import { Theme } from '@/app/providers/ThemeProvider'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
-  title: 'widget/Sidebar',
+  title: 'widget/SIdebar/Sidebar',
   component: Sidebar,
   parameters: { layout: 'centered' },
   tags: ['autodocs']

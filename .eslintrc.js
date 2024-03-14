@@ -31,6 +31,11 @@ module.exports = {
       }
     }
   ],
+  settings: {
+    react: {
+      version: "detect"
+    },
+  },
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -63,7 +68,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "error", // Checks effect dependencies
     "no-undef": "off",
-    'custom-path-checker/path-checker': 'error'
+    'custom-path-checker/path-checker': ['error', { alias: '@' }],
     // "react/no-array-index-key": "off"
     //"arrow-body-style": 'off'
   },
