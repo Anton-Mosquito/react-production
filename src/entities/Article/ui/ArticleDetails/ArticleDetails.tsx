@@ -61,6 +61,9 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps): JSX.Elemen
 
   useInitialEffect(() => {
     dispatch(fetchArticleById(id))
+      .catch(error => {
+        console.error('Failed to fetch article by id:', error)
+      })
   })
 
   let content

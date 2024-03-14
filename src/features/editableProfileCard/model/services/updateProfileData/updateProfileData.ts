@@ -7,7 +7,7 @@ import { ValidateProfileError } from '../../consts/consts'
 
 export const updateProfileData = createAsyncThunk<
 Profile,
-void,
+undefined,
 ThunkConfig<ValidateProfileError[]>
 >(
   'profile/updateProfileData',

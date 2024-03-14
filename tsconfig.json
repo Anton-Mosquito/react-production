@@ -9,12 +9,12 @@
     // "./config/storybook/main.ts",
     // "./config/storybook/preview.ts",
     // "./config/storybook/webpack.config.ts",
-    "./config",
     "./script"
   ],
   "exclude": [
     "node_modules", 
     "dist",
+    "./config",
   ],
   "compilerOptions": {
     "outDir": "./dist/",

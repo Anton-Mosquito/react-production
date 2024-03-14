@@ -4,7 +4,7 @@ export default function (): PluginItem {
   return {
     visitor: {
       Program (path, state) {
-        const forbidden = state.opts.props || []
+        const forbidden = Array.isArray(state.opts.props) ? state.opts.props : []
 
         path.traverse({
           JSXIdentifier (current) {

@@ -5,10 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Input } from '@/shared/ui/Input'
 import { Button, ThemeButton } from '@/shared/ui/Button/Button'
 import { useSelector } from 'react-redux'
-import {
-  getAddCommentFormError,
-  getAddCommentFormText
-} from '../../model/selectors/addCommentFormSelectors'
+import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentForm'
 import {
@@ -29,7 +26,6 @@ const reducers: ReducersList = {
 const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps): JSX.Element => {
   const { t } = useTranslation()
   const text = useSelector(getAddCommentFormText)
-  const error = useSelector(getAddCommentFormError)
   const dispatch = useAppDispatch()
 
   const onCommentTextChange = useCallback((value: string) => {
