@@ -69,6 +69,7 @@ module.exports = {
     "react-hooks/exhaustive-deps": "error", // Checks effect dependencies
     "no-undef": "off",
     'custom-path-checker/path-checker': ['error', { alias: '@' }],
+    'custom-path-checker/api-imports': ['error', { alias: '@' }],
     // "react/no-array-index-key": "off"
     //"arrow-body-style": 'off'
   },

@@ -1,5 +1,5 @@
+import { Page } from '@/widgets/Page'
 import { useTranslation } from 'react-i18next'
-import { Page } from '@/widgets/Page/Page'
 
 const MainPage = (): JSX.Element => {
   const { t } = useTranslation('main')
