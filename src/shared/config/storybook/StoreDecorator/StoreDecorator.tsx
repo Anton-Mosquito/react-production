@@ -1,15 +1,11 @@
 import { type StateSchema, StoreProvider } from '@/app/providers/StoreProvider'
 import { type Decorator } from '@storybook/react'
-// eslint-disable-next-line custom-path-checker/api-imports
-import { loginReducer } from '@/features/AuthByUsername/model/slice/loginSlice'
 import { type ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { articleDetailsReducer } from '@/entities/Article'
-// eslint-disable-next-line custom-path-checker/api-imports
-import { addCommentFormReducer } from '@/features/addCommentForm/model/slice/addCommentForm'
-// eslint-disable-next-line custom-path-checker/api-imports
-import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slices'
-// eslint-disable-next-line custom-path-checker/api-imports
-import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice'
+import { loginReducer } from '@/features/AuthByUsername/testing'
+import { articleDetailsReducer } from '@/entities/Article/testing'
+import { addCommentFormReducer } from '@/features/addCommentForm/testing'
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing'
+import { profileReducer } from '@/features/editableProfileCard/testing'
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
