@@ -8,13 +8,13 @@ import {
   DynamicModuleLoader,
   type ReducersList
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Page } from '@/widgets/Page/Page'
 import { articleDetailsPageReducer } from '../../model/slices'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { VStack } from '@/shared/ui/Stack'
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList'
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments'
 import { ArticleRating } from '@/features/articleRating'
+import { Page } from '@/widgets/Page'
 
 export interface ArticleDetailsPageProps {
   className?: string

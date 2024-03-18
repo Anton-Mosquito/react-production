@@ -8,12 +8,12 @@ import {
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { Page } from '@/widgets/Page/Page'
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import { ArticlePagesFilters } from '../ArticlePagesFilters/ArticlePagesFilters'
 import { useSearchParams } from 'react-router-dom'
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList'
+import { Page } from '@/widgets/Page'
 
 export interface ArticlesPageProps {
   className?: string
