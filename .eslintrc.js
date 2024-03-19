@@ -76,6 +76,13 @@ module.exports = {
         testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'] 
       }
     ],
+    'custom-path-checker/layer-imports': [
+      'error', 
+      { 
+        alias: '@',
+        ignoreImportPatterns: ['**/StoreProvider', '**/testing'] 
+      }
+    ],
     // "react/no-array-index-key": "off"
     //"arrow-body-style": 'off'
   },
