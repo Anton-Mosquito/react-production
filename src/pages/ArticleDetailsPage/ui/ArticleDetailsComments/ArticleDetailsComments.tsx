@@ -5,7 +5,7 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { Suspense, memo, useCallback } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { Text, TextSize } from '@/shared/ui/Text/Text'
+import { Text, TextSize } from '@/shared/ui/Text'
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments'
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice'
 import { useSelector } from 'react-redux'
