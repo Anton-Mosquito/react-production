@@ -8,7 +8,7 @@ import {
 } from '../../model/selectors/articlesPageSelector'
 import { getArticles } from '../../model/slices/articlesPageSlice'
 import { useSelector } from 'react-redux'
-import { Text } from '@/shared/ui/Text/Text'
+import { Text } from '@/shared/ui/Text'
 
 interface ArticleInfiniteListProps {
   className?: string
