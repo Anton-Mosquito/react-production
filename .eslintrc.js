@@ -48,7 +48,8 @@ module.exports = {
     'react',
     'i18next',
     'react-hooks',
-    "custom-path-checker"
+    "custom-path-checker",
+    "unused-imports"
   ],
   rules: {
     'react/jsx-indent': [2, 4],
@@ -83,6 +84,7 @@ module.exports = {
         ignoreImportPatterns: ['**/StoreProvider', '**/testing'] 
       }
     ],
+    "unused-imports/no-unused-imports": "error",
     // "react/no-array-index-key": "off"
     //"arrow-body-style": 'off'
   },
