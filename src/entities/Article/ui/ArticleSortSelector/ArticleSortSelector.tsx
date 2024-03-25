@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleSortSelector.module.scss'
 import { useTranslation } from 'react-i18next'
@@ -48,27 +48,20 @@ const ArticleSortSelector = memo(({
     }
   ], [t])
 
-  const changeSortHandler = useCallback((newSort: string) => {
-    onChangeSort(newSort as ArticleSortField)
-  }, [onChangeSort])
-
-  const changeOrderHandler = useCallback((newOrder: string) => {
-    onChangeOrder(newOrder as SortOrder)
-  }, [onChangeOrder])
   return (
       <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
           <Select
               label={t('Сортировать по')}
               options={sortFieldOptions}
               value={sort}
-              onChange={changeSortHandler}
+              onChange={onChangeSort}
           />
           <Select
               className={cls.order}
               label={t('по')}
               options={orderOptions}
               value={order}
-              onChange={changeOrderHandler}
+              onChange={onChangeOrder}
           />
       </div>
   )
