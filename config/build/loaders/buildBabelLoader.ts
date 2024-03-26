@@ -7,25 +7,20 @@ interface BuildBabelLoaderProps extends Partial<BuildOptions> {
 }
 
 export const buildBabelLoader = ({ isDev, isTSX }: BuildBabelLoaderProps): webpack.RuleSetRule => {
+  const isProd = !isDev
   return {
     test: isTSX ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
       options: {
+        cacheDirectory: true,
         presets: [
           '@babel/preset-react',
           '@babel/preset-env'
         ],
         plugins: [
-          [
-            'i18next-extract',
-            {
-              locales: ['ru', 'en'],
-              keyAsDefaultValue: true
-            }
-          ],
-          isTSX && [
+          isTSX && isProd && [
             babelRemovePropsPlugin,
             {
               props: ['data-testid']

@@ -12,15 +12,12 @@ export const buildPlugins = (
   options: BuildOptions
 ): webpack.WebpackPluginInstance[] => {
   const { paths, isDev, apiUrl, project } = options
+  const isProd = !isDev
 
   const plugins = [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: paths.html
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css'
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
@@ -29,11 +26,6 @@ export const buildPlugins = (
     }),
     new webpack.ProvidePlugin({
       React: 'react'
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: paths.locales, to: paths.buildLocales }
-      ]
     }),
     new CircularDependencyPlugin({
       // exclude detection of files based on a RegExp
@@ -65,5 +57,17 @@ export const buildPlugins = (
     plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }))
   }
 
+  if (isProd) {
+    plugins.push(new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css'
+    }))
+
+    plugins.push(new CopyPlugin({
+      patterns: [
+        { from: paths.locales, to: paths.buildLocales }
+      ]
+    }))
+  }
   return plugins
 }
