@@ -5,7 +5,7 @@ const AboutPage = (): JSX.Element => {
   const { t } = useTranslation('about')
 
   return (
-      <Page>
+      <Page data-testid={'AboutPage'}>
           {t('O сайте')}
       </Page>
   )

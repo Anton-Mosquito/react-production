@@ -15,7 +15,7 @@ const ArticleEditPage = memo(({ className }: ArticleEditPageProps): JSX.Element 
   const isEdit = Boolean(id)
 
   return (
-      <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleEditPage, {}, [className])} data-testid='ArticleEditPage'>
           {isEdit
             ? t('Редактирование статьи') + id
             : t('Создание новой статьи')}

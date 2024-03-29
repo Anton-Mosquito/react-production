@@ -13,7 +13,7 @@ import {
 import { type ArticlesPagesSchema } from '../types/articlesPageSchema'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localStorage'
-import { type SortOrder } from '@/shared/types'
+import { type SortOrder } from '@/shared/types/sort'
 
 const articlesAdapter = createEntityAdapter({
   selectId: (article: Article) => article.id

@@ -5,7 +5,7 @@ const ForbiddenPage = (): JSX.Element => {
   const { t } = useTranslation('about')
 
   return (
-      <Page>
+      <Page data-testid='ForbiddenPage'>
           {t('O сайте')}
       </Page>
   )

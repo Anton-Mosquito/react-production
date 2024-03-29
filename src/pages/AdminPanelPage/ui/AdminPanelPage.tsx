@@ -5,7 +5,7 @@ const AdminPanelPage = (): JSX.Element => {
   const { t } = useTranslation('admin')
 
   return (
-      <Page>
+      <Page data-testid='AdminPanelPage'>
           {t('Админ панель')}
       </Page>
   )
