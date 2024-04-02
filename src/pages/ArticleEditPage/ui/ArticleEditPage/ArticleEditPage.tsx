@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import cls from './ArticleEditPage.module.scss'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { Page } from '@/widgets/Page'
@@ -15,7 +14,7 @@ const ArticleEditPage = memo(({ className }: ArticleEditPageProps): JSX.Element 
   const isEdit = Boolean(id)
 
   return (
-      <Page className={classNames(cls.ArticleEditPage, {}, [className])} data-testid='ArticleEditPage'>
+      <Page className={classNames('', {}, [className])} data-testid='ArticleEditPage'>
           {isEdit
             ? t('Редактирование статьи') + id
             : t('Создание новой статьи')}
