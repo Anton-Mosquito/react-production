@@ -4,4 +4,4 @@ idea
 /storybook-static
 .loki/report.html
 .loki/report
-/reports
+/reports/unit

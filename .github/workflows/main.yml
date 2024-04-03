@@ -41,9 +41,11 @@
 name: linting, testing, building
 on: 
   push:
-    branches: [ master ]
+    branches: 
+      - '*'
   pull_request:
-    branches: [ master ]
+    branches:
+      - '*'
 permissions:
   contents: write
   pages: write
@@ -78,8 +80,14 @@ jobs:
       - name: screenshot testing
         run: npm run test:ui:ci
         if: always()
+      - name: unit testing
+        run: npm run test:unit
+        if: always()
       - name: Generate HTML report
         run: npm run test:ui:report
+        if: always()
+      - name: move loki 
+        run: mv .loki reports/
         if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -88,11 +96,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         if: always()
         with:
-          path: '.loki'
+          path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
         if: always()
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
   
   checks:
     runs-on: ubuntu-latest
@@ -112,7 +120,4 @@ jobs:
         if: always()
       - name: linting css
         run: npm run lint:scss
-        if: always()
-      - name: unit testing
-        run: npm run test:unit
         if: always()
