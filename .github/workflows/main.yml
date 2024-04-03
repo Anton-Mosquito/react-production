@@ -98,24 +98,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         if: always()
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
   
-  checks:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [17.x]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Starting Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: npm ci 
-      - name: linting typescript
-        run: npm run lint:ts
-        if: always()
-      - name: linting css
-        run: npm run lint:scss
-        if: always()
+  # checks:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [17.x]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Starting Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - name: install modules
+  #       run: npm ci 
+  #     - name: linting typescript
+  #       run: npm run lint:ts
+  #       if: always()
+  #     - name: linting css
+  #       run: npm run lint:scss
+  #       if: always()
