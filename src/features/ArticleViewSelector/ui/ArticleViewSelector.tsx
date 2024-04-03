@@ -33,7 +33,7 @@ const ArticleViewSelector = memo(({
     onViewClick?.(newView)
   }
   return (
-      <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
+      <div className={classNames('', {}, [className])}>
           {viewTypes.map((viewType) => (
               <Button
                   theme={ThemeButton.CLEAR}

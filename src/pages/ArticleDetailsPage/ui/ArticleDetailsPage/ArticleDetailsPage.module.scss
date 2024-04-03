@@ -4,6 +4,5 @@
 
 .recommendations {
   flex-wrap: nowrap;
-  overflow-y: hidden;
-  overflow-x: auto;
+  overflow: auto hidden;
 }

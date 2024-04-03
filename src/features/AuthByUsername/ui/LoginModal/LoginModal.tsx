@@ -1,5 +1,4 @@
 import { classNames } from '@/shared/lib/classNames/classNames'
-import cls from './LoginModal.module.scss'
 import { Modal } from '@/shared/ui/Modal'
 import { Suspense } from 'react'
 import { Loader } from '@/shared/ui/Loader'
@@ -18,7 +17,7 @@ export const LoginModal = ({
 }: LoginModalProps): JSX.Element => {
   return (
       <Modal
-          className={classNames(cls.LoginModal, {}, [className])}
+          className={classNames('', {}, [className])}
           isOpen={isOpen}
           onClose={onClose}
           lazy
