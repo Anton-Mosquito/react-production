@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const Normal: Story = {
   args: {
-    value: ArticleType.ALL
+    value: ArticleType.ALL,
+    onChangeType: () => ({})
   }
 }

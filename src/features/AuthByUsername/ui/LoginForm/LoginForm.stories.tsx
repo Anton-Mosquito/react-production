@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const LoginForm1: Story = {
   args: {
+    onSuccess: () => ({})
   },
   decorators: [
     StoreDecorator({
@@ -25,6 +26,7 @@ export const LoginForm1: Story = {
 
 export const LoginFormWithError: Story = {
   args: {
+    onSuccess: () => ({})
   },
   decorators: [
     StoreDecorator({
