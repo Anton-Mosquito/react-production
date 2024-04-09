@@ -6,19 +6,12 @@ import { BuildPath } from '../build/types/config';
 
 const config: StorybookConfig = {
   stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false
-      }
-    },
-    '@storybook/addon-onboarding',
-    '@storybook/addon-interactions',
-    'storybook-addon-mock',
-    'storybook-addon-themes'
-  ],
+  addons: ['@storybook/addon-links', {
+    name: '@storybook/addon-essentials',
+    options: {
+      backgrounds: false
+    }
+  }, '@storybook/addon-onboarding', '@storybook/addon-interactions', 'storybook-addon-mock', 'storybook-addon-themes', '@storybook/addon-webpack5-compiler-swc'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {
