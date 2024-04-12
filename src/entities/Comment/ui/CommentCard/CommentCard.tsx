@@ -18,7 +18,12 @@ interface CommentCardProps {
 const CommentCard = memo(({ className, comment, isLoading }: CommentCardProps): JSX.Element => {
   if (isLoading) {
     return (
-        <VStack gap='8' max className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
+        <VStack
+            data-testid='CommentCard.Loading'
+            gap='8'
+            max
+            className={classNames(cls.CommentCard, {}, [className, cls.loading])}
+        >
             <div className={cls.header}>
                 <Skeleton width={30} height={30} border='50%'/>
                 <Skeleton className={cls.username} height={16} width={100} />
@@ -34,6 +39,7 @@ const CommentCard = memo(({ className, comment, isLoading }: CommentCardProps): 
 
   return (
       <VStack
+          data-testid='CommentCard.Content'
           className={classNames(cls.CommentCard, {}, [className])}
           gap='8'
           max
