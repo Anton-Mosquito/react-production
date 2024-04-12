@@ -3,7 +3,7 @@ import { ArticleSortSelector } from './ArticleSortSelector'
 import { ArticleSortField } from '@/entities/Article'
 
 const meta = {
-  title: 'entities/Article/ArticleSortSelector',
+  title: 'features/ArticleSortSelector',
   component: ArticleSortSelector,
   tags: ['autodocs']
 } satisfies Meta<typeof ArticleSortSelector>
@@ -14,6 +14,8 @@ type Story = StoryObj<typeof meta>
 export const Normal: Story = {
   args: {
     sort: ArticleSortField.CREATED,
-    order: 'asc'
+    order: 'asc',
+    onChangeOrder: () => ({}),
+    onChangeSort: () => ({})
   }
 }

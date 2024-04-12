@@ -51,7 +51,8 @@ export const Flex = ({
   align = 'center',
   direction = 'row',
   gap,
-  max
+  max,
+  ...otherProps
 }: FlexProps): JSX.Element => {
   const classes = [
     className,
@@ -65,7 +66,7 @@ export const Flex = ({
     [cls.max]: max
   }
   return (
-      <div className={classNames(cls.Flex, mods, classes)}>
+      <div className={classNames(cls.Flex, mods, classes)} { ...otherProps }>
           { children }
       </div>
   )

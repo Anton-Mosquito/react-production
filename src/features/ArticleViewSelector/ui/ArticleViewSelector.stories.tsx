@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const Normal: Story = {
   args: {
-    view: ArticleView.BIG
+    view: ArticleView.BIG,
+    onViewClick: () => ({})
   }
 }
