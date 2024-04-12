@@ -1,6 +1,4 @@
 import { login } from './commands/login'
-/// <reference types="cypress" />
-// ***********************************************************
 
 Cypress.Commands.add('login', login)
 
