@@ -3,12 +3,6 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "webpack.config.ts",
-    // "./config/jest/setupTests.ts",
-    // "./config/jest/jest.config.ts",
-    // "./config/jest/jestEmptyComponent.tsx",
-    // "./config/storybook/main.ts",
-    // "./config/storybook/preview.ts",
-    // "./config/storybook/webpack.config.ts",
     "./script"
   ],
   "exclude": [
