@@ -1,18 +1,21 @@
-import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { type UISchema } from '../types/UISchema'
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { type UISchema } from '../types/UISchema';
 
 const initialState: UISchema = {
-  scroll: {}
-}
+    scroll: {},
+};
 
 export const uiSlice = createSlice({
-  name: 'ui',
-  initialState,
-  reducers: {
-    setScrollPosition: (state, { payload }: PayloadAction<{ path: string, position: number }>) => {
-      state.scroll[payload.path] = payload.position
-    }
-  }
-})
+    name: 'ui',
+    initialState,
+    reducers: {
+        setScrollPosition: (
+            state,
+            { payload }: PayloadAction<{ path: string; position: number }>,
+        ) => {
+            state.scroll[payload.path] = payload.position;
+        },
+    },
+});
 
-export const { actions: uiActions, reducer: uiReducer } = uiSlice
+export const { actions: uiActions, reducer: uiReducer } = uiSlice;
