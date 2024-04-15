@@ -1,36 +1,36 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { type ThunkConfig } from '@/app/providers/StoreProvider'
-import { getProfileData } from '../../selectors/getProfileData/getProfileData'
-import { validateProfileData } from '../validateProfileData/validateProfileData'
-import { type Profile } from '@/entities/Profile'
-import { ValidateProfileError } from '../../consts/consts'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { type ThunkConfig } from '@/app/providers/StoreProvider';
+import { getProfileData } from '../../selectors/getProfileData/getProfileData';
+import { validateProfileData } from '../validateProfileData/validateProfileData';
+import { type Profile } from '@/entities/Profile';
+import { ValidateProfileError } from '../../consts/consts';
 
 export const updateProfileData = createAsyncThunk<
-Profile,
-void,
-ThunkConfig<ValidateProfileError[]>
->(
-  'profile/updateProfileData',
-  async (_, thunkApi) => {
-    const { extra, rejectWithValue, getState } = thunkApi
-    const formData = getProfileData(getState())
-    const errors = validateProfileData(formData)
+    Profile,
+    void,
+    ThunkConfig<ValidateProfileError[]>
+>('profile/updateProfileData', async (_, thunkApi) => {
+    const { extra, rejectWithValue, getState } = thunkApi;
+    const formData = getProfileData(getState());
+    const errors = validateProfileData(formData);
 
     if (errors.length > 0) {
-      return rejectWithValue(errors)
+        return rejectWithValue(errors);
     }
 
     try {
-      const response = await extra.api.put<Profile>(`/profile/${formData?.id}`, formData)
+        const response = await extra.api.put<Profile>(
+            `/profile/${formData?.id}`,
+            formData,
+        );
 
-      if (!response.data) {
-        throw new Error()
-      }
+        if (!response.data) {
+            throw new Error();
+        }
 
-      return response.data
+        return response.data;
     } catch (error) {
-      console.error('🚀 ~ error:', error)
-      return rejectWithValue([ValidateProfileError.SERVER_ERROR])
+        console.error('🚀 ~ error:', error);
+        return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
     }
-  }
-)
+});

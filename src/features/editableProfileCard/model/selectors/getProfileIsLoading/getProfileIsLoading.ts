@@ -1,4 +1,4 @@
-import { type StateSchema } from '@/app/providers/StoreProvider'
+import { type StateSchema } from '@/app/providers/StoreProvider';
 
 export const getProfileIsLoading = (state: StateSchema): boolean =>
-  state.profile?.isLoading ?? false
+    state.profile?.isLoading ?? false;

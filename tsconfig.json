@@ -1,38 +1,29 @@
 {
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "webpack.config.ts",
-    "./script"
-  ],
-  "exclude": [
-    "node_modules", 
-    "dist",
-    "./config",
-  ],
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "ESNext",
-    "target": "es5",
-    "jsx": "preserve",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "baseUrl": ".", // absolute import 
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "strict": true,
-    "strictNullChecks": true,
-    "allowUmdGlobalAccess": true,
-    "allowSyntheticDefaultImports": true, // дозволяє працювати з пакетами, які використовують common js як зі звичайними пакетами з допомогою import (require() module.export) = common js
-    "esModuleInterop": true, // Якщо якась бібліотека не має default import, лоадери прода типу ts-loader || babel-loader автоматично створюю їх замість такого імпорта import * as React from 'react' можна писати import React from 'react'
-    "isolatedModules": true,
-    "types": ["@testing-library/jest-dom"],
-  },
-  "ts-node": {
+    "include": ["src/**/*.ts", "src/**/*.tsx", "webpack.config.ts", "./script"],
+    "exclude": ["node_modules", "dist", "./config"],
     "compilerOptions": {
-      "module": "CommonJS"
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "target": "es5",
+        "jsx": "preserve",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "baseUrl": ".", // absolute import
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "strict": true,
+        "strictNullChecks": true,
+        "allowUmdGlobalAccess": true,
+        "allowSyntheticDefaultImports": true, // дозволяє працювати з пакетами, які використовують common js як зі звичайними пакетами з допомогою import (require() module.export) = common js
+        "esModuleInterop": true, // Якщо якась бібліотека не має default import, лоадери прода типу ts-loader || babel-loader автоматично створюю їх замість такого імпорта import * as React from 'react' можна писати import React from 'react'
+        "isolatedModules": true,
+        "types": ["@testing-library/jest-dom"]
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     }
-  }
 }

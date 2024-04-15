@@ -1,35 +1,35 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { AppLink, AppLinkTheme } from './AppLink'
+import type { Meta, StoryObj } from '@storybook/react';
+import { AppLink, AppLinkTheme } from './AppLink';
 
 const meta = {
-  title: 'shared/AppLink',
-  component: AppLink,
-  tags: ['autodocs'],
-  args: {
-    to: '/'
-  }
-} satisfies Meta<typeof AppLink>
+    title: 'shared/AppLink',
+    component: AppLink,
+    tags: ['autodocs'],
+    args: {
+        to: '/',
+    },
+} satisfies Meta<typeof AppLink>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: {
-    theme: AppLinkTheme.PRIMARY,
-    children: 'AppLink'
-  }
-}
+    args: {
+        theme: AppLinkTheme.PRIMARY,
+        children: 'AppLink',
+    },
+};
 
 export const Secondary: Story = {
-  args: {
-    theme: AppLinkTheme.SECONDARY,
-    children: 'AppLink'
-  }
-}
+    args: {
+        theme: AppLinkTheme.SECONDARY,
+        children: 'AppLink',
+    },
+};
 
 export const Red: Story = {
-  args: {
-    theme: AppLinkTheme.RED,
-    children: 'AppLink'
-  }
-}
+    args: {
+        theme: AppLinkTheme.RED,
+        children: 'AppLink',
+    },
+};

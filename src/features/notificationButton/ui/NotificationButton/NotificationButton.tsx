@@ -1,57 +1,60 @@
-import { memo, useCallback, useState } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
-import cls from './NotificationButton.module.scss'
-import { Popover } from '@/shared/ui/Popups'
-import { NotificationList } from '@/entities/Notification'
-import { Button, ThemeButton } from '@/shared/ui/Button'
-import { Icon } from '@/shared/ui/Icon'
-import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg'
-import { Drawer } from '@/shared/ui/Drawer'
-import { BrowserView, MobileView } from 'react-device-detect'
+import { memo, useCallback, useState } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './NotificationButton.module.scss';
+import { Popover } from '@/shared/ui/Popups';
+import { NotificationList } from '@/entities/Notification';
+import { Button, ThemeButton } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
+import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg';
+import { Drawer } from '@/shared/ui/Drawer';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 interface NotificationButtonProps {
-  className?: string
+    className?: string;
 }
 
-const NotificationButton = memo(({ className }: NotificationButtonProps): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(false)
+const NotificationButton = memo(
+    ({ className }: NotificationButtonProps): JSX.Element => {
+        const [isOpen, setIsOpen] = useState(false);
 
-  const onOpenDrawer = useCallback(() => {
-    setIsOpen(true)
-  }, [])
+        const onOpenDrawer = useCallback(() => {
+            setIsOpen(true);
+        }, []);
 
-  const onCloseDrawer = useCallback(() => {
-    setIsOpen(false)
-  }, [])
+        const onCloseDrawer = useCallback(() => {
+            setIsOpen(false);
+        }, []);
 
-  const trigger = (
-      <Button theme={ThemeButton.CLEAR} onClick={onOpenDrawer}>
-          <Icon Svg={NotificationIcon} inverted/>
-      </Button>
-  )
+        const trigger = (
+            <Button theme={ThemeButton.CLEAR} onClick={onOpenDrawer}>
+                <Icon Svg={NotificationIcon} inverted />
+            </Button>
+        );
 
-  return (
-      <div>
-          <BrowserView>
-              <Popover
-                  className={classNames(cls.NotificationButton, {}, [className])}
-                  direction='bottom left'
-                  trigger={trigger}
-          >
-                  <NotificationList className={cls.notifications}/>
-              </Popover>
-          </BrowserView>
-          <MobileView>
-              {trigger}
-              <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                  <NotificationList className={cls.notifications}/>
-              </Drawer>
-          </MobileView>
+        return (
+            <div>
+                <BrowserView>
+                    <Popover
+                        className={classNames(cls.NotificationButton, {}, [
+                            className,
+                        ])}
+                        direction="bottom left"
+                        trigger={trigger}
+                    >
+                        <NotificationList className={cls.notifications} />
+                    </Popover>
+                </BrowserView>
+                <MobileView>
+                    {trigger}
+                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                        <NotificationList className={cls.notifications} />
+                    </Drawer>
+                </MobileView>
+            </div>
+        );
+    },
+);
 
-      </div>
-  )
-})
+NotificationButton.displayName = 'NotificationButton';
 
-NotificationButton.displayName = 'NotificationButton'
-
-export { NotificationButton }
+export { NotificationButton };

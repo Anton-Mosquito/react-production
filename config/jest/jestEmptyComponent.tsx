@@ -1,3 +1,3 @@
-const jestEmptyComponent = (): JSX.Element => <div />
+const jestEmptyComponent = (): JSX.Element => <div />;
 
-export default jestEmptyComponent
+export default jestEmptyComponent;

@@ -2,7 +2,7 @@ let currentArticleId = '';
 describe('Пользователь заходит на страницу статьи', () => {
     beforeEach(() => {
         cy.login();
-        cy.createArticle().then((article) => {
+        cy.createArticle().then(article => {
             currentArticleId = article.id;
             cy.visit(`articles/${article.id}`);
         });
@@ -29,7 +29,9 @@ describe('Пользователь заходит на страницу стат
         cy.get('[data-selected=true]').should('have.length', 4);
     });
     it('И ставит оценку (пример с стабом на фикстурах)', () => {
-        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+        cy.intercept('GET', '**/articles/*', {
+            fixture: 'article-details.json',
+        });
         cy.getByTestId('ArticleDetails.Info');
         cy.getByTestId('RatingCard').scrollIntoView();
         cy.setRate(4, 'feedback');

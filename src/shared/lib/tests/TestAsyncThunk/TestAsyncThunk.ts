@@ -1,46 +1,46 @@
-import { type StateSchema } from '@/app/providers/StoreProvider'
-import { type AsyncThunkAction } from '@reduxjs/toolkit'
-import axios, { type AxiosStatic } from 'axios'
+import { type StateSchema } from '@/app/providers/StoreProvider';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import axios, { type AxiosStatic } from 'axios';
 
-type ActionCreatorType<Return, Arg, RejectedValue>
-    = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>
+type ActionCreatorType<Return, Arg, RejectedValue> = (
+    arg: Arg,
+) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
-jest.mock('axios')
+jest.mock('axios');
 
-const mockedAxios = jest.mocked(axios, { shallow: false })
+const mockedAxios = jest.mocked(axios, { shallow: false });
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dispatch: jest.MockedFn<any>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    dispatch: jest.MockedFn<any>;
 
-  getState: () => StateSchema
+    getState: () => StateSchema;
 
-  actionCreator: ActionCreatorType<Return, Arg, RejectedValue>
+    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
 
-  api: jest.MockedFunctionDeep<AxiosStatic>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigate: jest.MockedFn<any>
+    api: jest.MockedFunctionDeep<AxiosStatic>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    navigate: jest.MockedFn<any>;
 
-  constructor (
-    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
-    state?: DeepPartial<StateSchema>
-  ) {
-    this.actionCreator = actionCreator
-    this.dispatch = jest.fn()
-    this.getState = jest.fn(() => state as StateSchema)
-    this.api = mockedAxios
-    this.navigate = jest.fn()
-  }
+    constructor(
+        actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
+        state?: DeepPartial<StateSchema>,
+    ) {
+        this.actionCreator = actionCreator;
+        this.dispatch = jest.fn();
+        this.getState = jest.fn(() => state as StateSchema);
+        this.api = mockedAxios;
+        this.navigate = jest.fn();
+    }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  async callThunk (arg: Arg) {
-    const action = this.actionCreator(arg)
-    const result = await action(
-      this.dispatch,
-      this.getState,
-      { api: this.api, navigate: this.navigate }
-    )
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    async callThunk(arg: Arg) {
+        const action = this.actionCreator(arg);
+        const result = await action(this.dispatch, this.getState, {
+            api: this.api,
+            navigate: this.navigate,
+        });
 
-    return result
-  }
+        return result;
+    }
 }
