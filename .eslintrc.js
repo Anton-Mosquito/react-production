@@ -96,7 +96,7 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         // "react/no-array-index-key": "off"
         //"arrow-body-style": 'off'
-        'react/jsx-max-props-per-line': ['error', { maximum: 3 }],
+        'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
     },
     globals: {
         __IS_DEV__: true,
