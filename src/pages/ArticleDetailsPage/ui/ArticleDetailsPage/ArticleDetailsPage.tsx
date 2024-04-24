@@ -15,6 +15,7 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/articleRating';
 import { Page } from '@/widgets/Page';
+import { getFeatureFlags } from '@/shared/lib/features';
 
 export interface ArticleDetailsPageProps {
     className?: string;
@@ -29,6 +30,7 @@ const ArticleDetailsPage = ({
 }: ArticleDetailsPageProps): JSX.Element | null => {
     const { t } = useTranslation('article-details');
     const { id } = useParams<{ id: string }>();
+    const isArticleRatingEnabled = getFeatureFlags('isArticleRatingEnabled');
 
     if (!id) {
         return null;
@@ -43,7 +45,7 @@ const ArticleDetailsPage = ({
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    <ArticleRating articleId={id} />
+                    {isArticleRatingEnabled &&  <ArticleRating articleId={id} />}
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>
