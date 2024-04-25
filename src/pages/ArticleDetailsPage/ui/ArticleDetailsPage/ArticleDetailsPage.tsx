@@ -15,7 +15,8 @@ import { ArticleRecommendationsList } from '@/features/articleRecommendationsLis
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/articleRating';
 import { Page } from '@/widgets/Page';
-import { getFeatureFlags } from '@/shared/lib/features';
+import { getFeatureFlags, toggleFeature } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 
 export interface ArticleDetailsPageProps {
     className?: string;
@@ -36,6 +37,12 @@ const ArticleDetailsPage = ({
         return null;
     }
 
+    const articleRatingCard = toggleFeature({
+        name: 'isArticleRatingEnabled',
+        on: () => <ArticleRating articleId={id} />,
+        off: () => <Card>{t('Оценка статей скоро появится!')}</Card>
+    })
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page
@@ -45,7 +52,7 @@ const ArticleDetailsPage = ({
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {isArticleRatingEnabled &&  <ArticleRating articleId={id} />}
+                    {articleRatingCard}
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>
