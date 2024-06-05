@@ -14,6 +14,7 @@ import { ArticlePagesFilters } from '../ArticlePagesFilters/ArticlePagesFilters'
 import { useSearchParams } from 'react-router-dom';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 import { Page } from '@/widgets/Page';
+import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 
 export interface ArticlesPageProps {
     className?: string;
@@ -28,10 +29,12 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
     const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
     useInitialEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         dispatch(initArticlesPage(searchParams));
     });
 
@@ -44,6 +47,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps): JSX.Element => {
             >
                 <ArticlePagesFilters />
                 <ArticleInfiniteList className={cls.list} />
+                <ArticlePageGreeting />
             </Page>
         </DynamicModuleLoader>
     );
