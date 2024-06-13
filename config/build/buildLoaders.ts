@@ -6,7 +6,23 @@ import { buildBabelLoader } from './loaders/buildBabelLoader'
 export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => {
   const svgLoader = {
     test: /\.svg$/,
-    use: ['@svgr/webpack']
+    use: [{
+      loader: '@svgr/webpack',
+      options: {
+        icon: true,
+        svgoConfig: {
+          plugins: [
+            { 
+              name: 'convertColors',
+              params: {
+                currentColor: true
+              } 
+            }
+          ]
+        }
+      }
+    }],
+
   }
 
   const codeBabelLoader = buildBabelLoader({ isDev, isTSX: false })

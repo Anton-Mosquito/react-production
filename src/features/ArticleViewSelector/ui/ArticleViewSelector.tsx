@@ -48,6 +48,8 @@ const ArticleViewSelector = memo(
                                 [],
                             )}
                             Svg={viewType.icon}
+                            width={24}
+                            height={24}
                         />
                     </Button>
                 ))}
