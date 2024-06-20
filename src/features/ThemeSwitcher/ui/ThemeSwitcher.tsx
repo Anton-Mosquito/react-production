@@ -1,12 +1,17 @@
 import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ThemeSwitcher.module.scss';
-import ThemeIcon from '@/shared/assets/icons/theme-dark.svg';
-import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import ThemeIconDeprecated from '@/shared/assets/icons/theme-dark.svg';
+import {
+    Button as ButtonDeprecated,
+    ThemeButton,
+} from '@/shared/ui/deprecated/Button';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { saveJsonSettings } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -24,13 +29,32 @@ const ThemeSwitcher = memo(
         }, [dispatch, toggleTheme]);
 
         return (
-            <Button
-                theme={ThemeButton.CLEAR}
-                className={classNames(cls.ThemeSwitcher, {}, [className])}
-                onClick={onToggleHandler}
-            >
-                <Icon Svg={ThemeIcon} width={40} height={40} inverted/>
-            </Button>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Icon
+                        Svg={ThemeIconDeprecated}
+                        clickable
+                        onClick={onToggleHandler}
+                    />
+                }
+                off={
+                    <ButtonDeprecated
+                        theme={ThemeButton.CLEAR}
+                        className={classNames(cls.ThemeSwitcher, {}, [
+                            className,
+                        ])}
+                        onClick={onToggleHandler}
+                    >
+                        <IconDeprecated
+                            Svg={ThemeIconDeprecated}
+                            width={40}
+                            height={40}
+                            inverted
+                        />
+                    </ButtonDeprecated>
+                }
+            />
         );
     },
 );
