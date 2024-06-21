@@ -25,7 +25,7 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import {
     type ArticleBlock,
     ArticleBlockType,

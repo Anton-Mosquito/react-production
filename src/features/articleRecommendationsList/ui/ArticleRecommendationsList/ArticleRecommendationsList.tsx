@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { ArticleList } from '@/entities/Article';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 
 interface ArticleRecommendationsListProps {
