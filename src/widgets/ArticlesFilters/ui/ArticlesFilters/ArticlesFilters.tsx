@@ -9,6 +9,8 @@ import { Input } from '@/shared/ui/redesigned/Input';
 import { type ArticleSortField, type ArticleType } from '@/entities/Article';
 import { type SortOrder } from '@/shared/types/sort';
 import { Card } from '@/shared/ui/redesigned/Card';
+import SearchIcon from '@/shared/assets/icons/search.svg';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ArticlesFiltersProps {
     className?: string;
@@ -46,6 +48,7 @@ export const ArticlesFilters = memo(
                         placeholder={t('Поиск')}
                         value={search}
                         onChange={onChangeSearch}
+                        addonLeft={<Icon Svg={SearchIcon} />}
                     />
                     <ArticleSortSelector
                         order={order}
