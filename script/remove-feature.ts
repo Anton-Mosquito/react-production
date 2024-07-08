@@ -121,7 +121,7 @@ files.forEach((sourceFile) => {
     }
 
     if (node.isKind(SyntaxKind.JsxSelfClosingElement) && isToggleComponent(node)) {
-      replaceComponent(node); 
+      replaceComponent(node);  
     }
   });
 });

@@ -17,14 +17,14 @@ const AppLogo = memo(
                 max
                 justify="center"
             >
-                <div className={cls.gradientBig}></div>
-                <div className={cls.gradientSmall}></div>
                 <AppSvg
                     width={size}
                     height={size}
                     color="black"
                     className={cls.appLogo}
                 />
+                  <div className={cls.gradientBig}></div>
+                  <div className={cls.gradientSmall}></div>
             </HStack>
         );
     },
