@@ -15,6 +15,13 @@ interface ArticleListItemSkeletonProps {
 
 const ArticleListItemSkeleton = memo(
     ({ className, view }: ArticleListItemSkeletonProps): JSX.Element => {
+        const mainClass = toggleFeature({
+            name: 'isAppRedesigned',
+            on:() => cls.ArticleListItemRedesigned,
+            off: () => cls.ArticleListItem,
+        })
+
+
         const Skeleton = toggleFeature({
             name: 'isAppRedesigned',
             on:() => SkeletonRedesigned,
@@ -30,7 +37,7 @@ const ArticleListItemSkeleton = memo(
         if (view === ArticleView.BIG) {
             return (
                 <div
-                    className={classNames(cls.ArticleListItem, {}, [
+                    className={classNames(mainClass, {}, [
                         className,
                         cls[view],
                     ])}
@@ -65,7 +72,7 @@ const ArticleListItemSkeleton = memo(
 
         return (
             <div
-                className={classNames(cls.ArticleListItem, {}, [
+                className={classNames(mainClass, {}, [
                     className,
                     cls[view],
                 ])}
