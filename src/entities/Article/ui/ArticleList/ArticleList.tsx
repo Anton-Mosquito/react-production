@@ -7,6 +7,8 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
 import { useTranslation } from 'react-i18next';
 import { ArticleView } from '../../model/consts/articleConsts';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
     className?: string;
@@ -50,24 +52,52 @@ const ArticleList = memo(
             );
         }
         return (
-            <div
-                className={classNames(cls.ArticleList, {}, [
-                    className,
-                    cls[view],
-                ])}
-                data-testid="ArticleList"
-            >
-                {articles.map(item => (
-                    <ArticleListItem
-                        article={item}
-                        view={view}
-                        target={target}
-                        className={cls.card}
-                        key={item.id}
-                    />
-                ))}
-                {isLoading && getSkeleton(view)}
-            </div>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <HStack
+                        wrap='wrap'
+                        gap="16"
+                        className={classNames(
+                            cls.ArticleListRedesigned,
+                            {},
+                            [],
+                        )}
+                        data-testid="ArticleList"
+                    >
+                        {articles.map(item => (
+                            <ArticleListItem
+                                article={item}
+                                view={view}
+                                target={target}
+                                className={cls.card}
+                                key={item.id}
+                            />
+                        ))}
+                        {isLoading && getSkeleton(view)}
+                    </HStack>
+                }
+                off={
+                    <div
+                        className={classNames(cls.ArticleList, {}, [
+                            className,
+                            cls[view],
+                        ])}
+                        data-testid="ArticleList"
+                    >
+                        {articles.map(item => (
+                            <ArticleListItem
+                                article={item}
+                                view={view}
+                                target={target}
+                                className={cls.card}
+                                key={item.id}
+                            />
+                        ))}
+                        {isLoading && getSkeleton(view)}
+                    </div>
+                }
+            />
         );
     },
 );
