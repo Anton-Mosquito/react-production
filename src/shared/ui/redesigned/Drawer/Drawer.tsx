@@ -14,6 +14,7 @@ import {
     useAnimationLibs,
 } from '@/shared/lib/components/AnimationProvider';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { toggleFeature } from '@/shared/lib/features';
 
 interface DrawerProps extends PropsWithChildren {
     className?: string;
@@ -91,12 +92,17 @@ export const DrawerContent = memo(
         const display = y.to(py => (py < height ? 'block' : 'none'));
 
         return (
-            <Portal>
+            <Portal element={document.getElementById('app') ?? document.body}>
                 <div
                     className={classNames(cls.Drawer, {}, [
                         className,
                         theme,
                         'app_drawer',
+                        toggleFeature({
+                            name: 'isAppRedesigned',
+                            on: () => cls.drawerNew,
+                            off: () => cls.drawerOld,
+                        }),
                     ])}
                 >
                     <Overlay onClick={close} />
