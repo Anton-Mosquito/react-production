@@ -1,5 +1,6 @@
 export enum AppRoutes {
     MAIN = 'main',
+    SETTINGS = 'settings',
     ABOUT = 'about',
     PROFILE = 'profile',
     ARTICLES = 'articles',
@@ -22,3 +23,4 @@ export const getRouteArticleEdit = (id: string): string =>
     `/articles/${id}/edit`;
 export const getRouteAdminPanel = (): string => '/admin';
 export const getRouteForbidden = (): string => '/forbidden';
+export const getRouteSettings = (): string => '/settings';
