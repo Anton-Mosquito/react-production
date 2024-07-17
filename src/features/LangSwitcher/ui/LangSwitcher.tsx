@@ -25,7 +25,11 @@ const LangSwitcher = memo(
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
-                    <Button variant="clear">
+                    <Button
+                        variant="clear"
+                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                        onClick={toggle}
+                    >
                         {t(short ? 'короткий язик' : 'Язик')}
                     </Button>
                 }

@@ -13,5 +13,7 @@
     "Недійсні дані авторизації": "Invalid authorization data",
     "Вийти": "Exit",
     "Укажите валюту": "Define currency",
-    "Укажите страну": "Define country"
+    "Укажите страну": "Define country",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views"
 }
