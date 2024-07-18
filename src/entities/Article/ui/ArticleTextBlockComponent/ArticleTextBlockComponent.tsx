@@ -1,8 +1,10 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleTextBlockComponent.module.scss';
 import { memo } from 'react';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { type ArticleTextBlock } from '../../model/types/article';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleTextBlockComponentProps {
     className?: string;
@@ -18,13 +20,35 @@ const ArticleTextBlockComponent = memo(
                 ])}
             >
                 {block.title && (
-                    <Text className={cls.title} title={block.title} />
+                    <ToggleFeatures
+                        feature="isAppRedesigned"
+                        on={<Text className={cls.title} title={block.title} />}
+                        off={
+                            <TextDeprecated
+                                className={cls.title}
+                                title={block.title}
+                            />
+                        }
+                    />
                 )}
                 {block.paragraphs.map(paragraph => (
-                    <Text
+                    <ToggleFeatures
                         key={paragraph}
-                        className={cls.paragraph}
-                        text={paragraph}
+                        feature="isAppRedesigned"
+                        on={
+                            <Text
+                                key={paragraph}
+                                className={cls.paragraph}
+                                text={paragraph}
+                            />
+                        }
+                        off={
+                            <TextDeprecated
+                                key={paragraph}
+                                className={cls.paragraph}
+                                text={paragraph}
+                            />
+                        }
                     />
                 ))}
             </div>
