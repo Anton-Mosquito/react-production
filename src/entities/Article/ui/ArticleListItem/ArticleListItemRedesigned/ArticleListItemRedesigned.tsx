@@ -27,7 +27,11 @@ const ArticleListItemRedesigned = memo(
 
         const userInfo = (
             <>
-                <Avatar size={32} src={article.user.avatar} />
+                <Avatar
+                    size={32}
+                    src={article.user.avatar}
+                    className={cls.avatar}
+                />
                 <Text bold text={article.user.username} />
             </>
         );
@@ -100,12 +104,12 @@ const ArticleListItemRedesigned = memo(
                 ])}
                 to={getRouteArticleDetails(article.id)}
             >
-                <Card className={cls.card} border="round">
+                <Card className={cls.card} border="round" padding="0">
                     <AppImage
                         className={cls.img}
                         src={article.img}
                         alt={article.title}
-                        fallback={<Skeleton width={200} height={200} />}
+                        fallback={<Skeleton width="100%" height={200} />}
                     />
                     <VStack gap="8" className={cls.info}>
                         <Text text={article.title} className={cls.title} />
@@ -116,7 +120,7 @@ const ArticleListItemRedesigned = memo(
                                     text={article.createdAt}
                                 />
                             </HStack>
-                            <HStack gap='4'>{userInfo}</HStack>
+                            <HStack gap="4">{userInfo}</HStack>
                         </VStack>
                     </VStack>
                 </Card>
