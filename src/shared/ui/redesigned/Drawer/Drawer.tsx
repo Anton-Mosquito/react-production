@@ -135,10 +135,6 @@ const DrawerAsync = (props: DrawerProps): JSX.Element | null => {
     return <DrawerContent {...props} />;
 };
 
-/**
- * Устарелб используем новие компоненти из папки redesigned
- * @deprecated
- */
 export const Drawer = (props: DrawerProps): JSX.Element => {
     return (
         <AnimationProvider>
