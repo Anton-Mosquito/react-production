@@ -17,10 +17,6 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-/**
- * Устарелб используем новие компоненти из папки redesigned
- * @deprecated
- */
 export const Modal = ({
     className,
     children,

@@ -21,7 +21,7 @@ import {
     TextSize,
 } from '@/shared/ui/deprecated/Text';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
@@ -29,7 +29,7 @@ import { Icon } from '@/shared/ui/deprecated/Icon';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { renderArticleBlock } from './renderBlock';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeature, ToggleFeatures } from '@/shared/lib/features';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 
@@ -40,6 +40,28 @@ interface ArticleDetailsProps {
 
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
+};
+
+const ArticleDetailsSkeleton = (): JSX.Element => {
+    const Skeleton = toggleFeature({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
+    return (
+        <VStack gap="16" max>
+            <Skeleton
+                className={cls.avatar}
+                width={200}
+                height={200}
+                border={'50%'}
+            />
+            <Skeleton className={cls.title} width={300} height={32} />
+            <Skeleton className={cls.skeleton} width={600} height={24} />
+            <Skeleton className={cls.skeleton} width={'100%'} height={200} />
+            <Skeleton className={cls.skeleton} width={'100%'} height={200} />
+        </VStack>
+    );
 };
 
 const Deprecated = (): JSX.Element => {
@@ -80,7 +102,11 @@ const Redesigned = (): JSX.Element => {
                 className={cls.img}
                 src={article?.img}
                 fallback={
-                    <Skeleton width={'100%'} height={420} border="16px" />
+                    <SkeletonRedesigned
+                        width={'100%'}
+                        height={420}
+                        border="16px"
+                    />
                 }
             />
             {article?.blocks.map(renderArticleBlock)}
@@ -104,41 +130,23 @@ const ArticleDetails = memo(
         let content;
 
         if (isLoading) {
-            content = (
-                <div>
-                    <SkeletonDeprecated
-                        className={cls.avatar}
-                        width={200}
-                        height={200}
-                        border={'50%'}
-                    />
-                    <SkeletonDeprecated
-                        className={cls.title}
-                        width={300}
-                        height={32}
-                    />
-                    <SkeletonDeprecated
-                        className={cls.skeleton}
-                        width={600}
-                        height={24}
-                    />
-                    <SkeletonDeprecated
-                        className={cls.skeleton}
-                        width={'100%'}
-                        height={200}
-                    />
-                    <SkeletonDeprecated
-                        className={cls.skeleton}
-                        width={'100%'}
-                        height={200}
-                    />
-                </div>
-            );
+            content = <ArticleDetailsSkeleton />;
         } else if (error) {
             content = (
-                <Text
-                    align={TextAlign.CENTER}
-                    text={t('Произошла ошибка при загрузке статьи')}
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={
+                        <Text
+                            align="center"
+                            text={t('Произошла ошибка при загрузке статьи')}
+                        />
+                    }
+                    off={
+                        <TextDeprecated
+                            align={TextAlign.CENTER}
+                            text={t('Произошла ошибка при загрузке статьи')}
+                        />
+                    }
                 />
             );
         } else {
