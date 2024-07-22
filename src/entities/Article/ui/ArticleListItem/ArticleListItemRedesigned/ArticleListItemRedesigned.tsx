@@ -104,7 +104,7 @@ const ArticleListItemRedesigned = memo(
                 ])}
                 to={getRouteArticleDetails(article.id)}
             >
-                <Card className={cls.card} border="round" padding="0">
+                <Card className={cls.card} border="partial" padding="0">
                     <AppImage
                         className={cls.img}
                         src={article.img}
