@@ -1,7 +1,11 @@
 import { type FeatureFlags } from '@/shared/types/featureFlags';
 
-let featureFlags: FeatureFlags;
+let featureFlags: FeatureFlags = {};
 
+// context
+// state
+// reload page
+// crutch
 export function setFeatureFlags(newFeatureFlags?: FeatureFlags): void {
     if (newFeatureFlags) {
         featureFlags = newFeatureFlags ?? {};

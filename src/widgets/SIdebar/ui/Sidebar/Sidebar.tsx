@@ -3,8 +3,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Sidebar.module.scss';
 import { Button, ButtonSize, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { useSelector } from 'react-redux';
-import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
@@ -12,6 +10,7 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import ArrowIcon from '@/assets/icons/arrow-bottom.svg';
+import { useSidebarItems } from '../../model/selectors/getSidebarItems';
 
 interface SidebarProps {
     className?: string;
@@ -19,7 +18,7 @@ interface SidebarProps {
 
 const Sidebar = memo(({ className }: SidebarProps): JSX.Element => {
     const [collapsed, setCollapsed] = useState(false);
-    const sidebarItemsList = useSelector(getSidebarItems);
+    const sidebarItemsList = useSidebarItems();
     const onToggle = (): void => {
         setCollapsed(prev => !prev);
     };

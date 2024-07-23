@@ -55,6 +55,7 @@ const EditableProfileCard = memo(
 
         useInitialEffect(() => {
             if (id) {
+                // eslint-disable-next-line @typescript-eslint/no-floating-promises
                 dispatch(fetchProfileData(id));
             }
         });
@@ -119,7 +120,11 @@ const EditableProfileCard = memo(
 
         return (
             <DynamicModuleLoader reducers={reducers}>
-                <VStack className={classNames('', {}, [className])} gap="8" max>
+                <VStack
+                    className={classNames('', {}, [className])}
+                    gap="16"
+                    max
+                >
                     <EditProfileCardHeader />
                     {validateErrors?.length > 0 &&
                         validateErrors.map(err => (
