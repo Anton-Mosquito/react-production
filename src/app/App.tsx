@@ -17,9 +17,11 @@ const App = (): JSX.Element => {
     const inited = useSelector(getUserInited);
 
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        dispatch(initAuthData());
-    }, [dispatch]);
+        if (!inited) {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            dispatch(initAuthData());
+        }
+    }, [dispatch, inited]);
 
     if (!inited) {
         return <PageLoader />;
