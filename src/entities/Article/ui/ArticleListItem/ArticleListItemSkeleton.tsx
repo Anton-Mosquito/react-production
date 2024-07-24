@@ -2,11 +2,11 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleListItem.module.scss';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
-import { Card as CardRedesign  } from '@/shared/ui/redesigned/Card';
+import { Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { ArticleView } from '../../model/consts/articleConsts';
-import { toggleFeature } from '@/shared/lib/features';
+import { toggleFeature, ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleListItemSkeletonProps {
     className?: string;
@@ -17,24 +17,39 @@ const ArticleListItemSkeleton = memo(
     ({ className, view }: ArticleListItemSkeletonProps): JSX.Element => {
         const mainClass = toggleFeature({
             name: 'isAppRedesigned',
-            on:() => cls.ArticleListItemRedesigned,
+            on: () => cls.ArticleListItemRedesigned,
             off: () => cls.ArticleListItem,
-        })
-
+        });
 
         const Skeleton = toggleFeature({
             name: 'isAppRedesigned',
-            on:() => SkeletonRedesigned,
+            on: () => SkeletonRedesigned,
             off: () => SkeletonDeprecated,
         });
-        const Card = toggleFeature({
-            name: 'isAppRedesigned',
-            on:() => CardRedesign,
-            off: () => CardDeprecated,
-        });
-
 
         if (view === ArticleView.BIG) {
+            const cardContent = (
+                <>
+                    <div className={cls.header}>
+                        <Skeleton border="50%" height={30} width={30} />
+                        <Skeleton
+                            width={150}
+                            height={16}
+                            className={cls.username}
+                        />
+                        <Skeleton
+                            width={150}
+                            height={16}
+                            className={cls.date}
+                        />
+                    </div>
+                    <Skeleton width={250} height={24} className={cls.title} />
+                    <Skeleton height={200} className={cls.img} />
+                    <div className={cls.footer}>
+                        <Skeleton height={36} width={200} />
+                    </div>
+                </>
+            );
             return (
                 <div
                     className={classNames(mainClass, {}, [
@@ -42,54 +57,67 @@ const ArticleListItemSkeleton = memo(
                         cls[view],
                     ])}
                 >
-                    <Card className={cls.card}>
-                        <div className={cls.header}>
-                            <Skeleton height={30} width={30} border={'50%'} />
-                            <Skeleton
-                                width={150}
-                                height={16}
-                                className={cls.username}
-                            />
-                            <Skeleton
-                                width={150}
-                                height={16}
-                                className={cls.date}
-                            />
-                        </div>
-                        <Skeleton
-                            className={cls.title}
-                            width={250}
-                            height={24}
-                        />
-                        <Skeleton className={cls.img} height={250} />
-                        <div className={cls.footer}>
-                            <Skeleton height={36} width={200} />
-                        </div>
-                    </Card>
+                    <ToggleFeatures
+                        feature="isAppRedesigned"
+                        on={
+                            <CardRedesigned border="round" className={cls.card}>
+                                {cardContent}
+                            </CardRedesigned>
+                        }
+                        off={
+                            <CardDeprecated className={cls.card}>
+                                {cardContent}
+                            </CardDeprecated>
+                        }
+                    />
                 </div>
             );
         }
 
-        return (
-            <div
-                className={classNames(mainClass, {}, [
-                    className,
-                    cls[view],
-                ])}
-            >
-                <Card className={cls.card}>
-                    <div className={cls.imageWrapper}>
+        const cardContent = (
+            <>
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={
                         <Skeleton
+                            width="100%"
+                            height={150}
+                            border="32px"
                             className={cls.img}
-                            width={200}
-                            height={200}
                         />
-                    </div>
-                    <div className={cls.infoWrapper}>
-                        <Skeleton width={130} height={16} />
-                    </div>
-                    <Skeleton width={150} height={16} className={cls.title} />
-                </Card>
+                    }
+                    off={
+                        <div className={cls.imageWrapper}>
+                            <Skeleton
+                                width={200}
+                                height={200}
+                                className={cls.img}
+                            />
+                        </div>
+                    }
+                />
+                <div className={cls.infoWrapper}>
+                    <Skeleton width={130} height={16} />
+                </div>
+                <Skeleton width={150} height={16} className={cls.title} />
+            </>
+        );
+
+        return (
+            <div className={classNames(mainClass, {}, [className, cls[view]])}>
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={
+                        <CardRedesigned border="round" className={cls.card}>
+                            {cardContent}
+                        </CardRedesigned>
+                    }
+                    off={
+                        <CardDeprecated className={cls.card}>
+                            {cardContent}
+                        </CardDeprecated>
+                    }
+                />
             </div>
         );
     },
