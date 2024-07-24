@@ -14,15 +14,21 @@ const ThemeProvider = ({
 }: ThemeProviderProps): JSX.Element => {
     const { theme: defaultTheme } = useJsonSettings();
     const [isThemeInited, setIsThemeInited] = useState<boolean>(false);
-    const [theme, setTheme] = useState<Theme>(initialTheme ?? defaultTheme ?? Theme.LIGHT);
+    const [theme, setTheme] = useState<Theme>(
+        initialTheme ?? defaultTheme ?? Theme.LIGHT,
+    );
     const defaultProps = useMemo(() => ({ theme, setTheme }), [theme]);
 
     useEffect(() => {
-        if (!isThemeInited && (defaultTheme != null)) {
+        if (!isThemeInited && defaultTheme != null) {
             setTheme(defaultTheme);
             setIsThemeInited(true);
         }
     }, [defaultTheme, isThemeInited]);
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
 
     return (
         <ThemeContext.Provider value={defaultProps}>
